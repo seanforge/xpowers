@@ -17,15 +17,13 @@ Deliver the approved behavior and its executable evidence as one reviewable chan
 
 Choose direct work or one implementation subagent at a time. All worktree writes are sequential; never allow concurrent writing agents.
 
-**REQUIRED SUB-SKILL:** Use `skills:valuable-tests` to choose test boundaries, cases, doubles, and suite shape.
+**REQUIRED SUB-SKILLS:** Use `skills:clean-code`, `skills:valuable-tests`, and `tdd`.
 
-Production code and tests are one implementation responsibility. Work in vertical behavior slices: establish the observable outcome, add the most useful failing test when the seam supports test-driven development, implement enough to satisfy it, and keep the slice clean. Do not batch all tests before implementation or defer them to another phase.
+**CONDITIONAL SUB-SKILLS:** Use `codebase-design` when creating or changing a module, interface, seam, adapter, or architecture. Use `diagnosing-bugs` when an unexpected failure or behavior remains unexplained. Load repository- or technology-specific skills when the change triggers them.
 
-Choose the smallest reliable boundary that captures the behavior and its realistic failure mode:
+Production code and tests are one implementation responsibility. Follow `tdd` at plan-agreed seams, one vertical behavior slice at a time. Do not batch all tests before implementation or defer them to another phase.
 
-- Unit or component tests for isolated behavior they can fully establish.
-- Integration or contract tests for wiring, persistence, serialization, owned boundaries, or collaborator semantics hidden by isolation.
-- End-to-end tests for changed critical journeys or system properties that narrower tests cannot establish.
+Choose the smallest reliable test boundary for the behavior and its realistic failure mode. Use broader integration, contract, or end-to-end coverage only for properties narrower tests cannot establish.
 
 There is no test-level quota. Do not duplicate assertions across layers or add E2E merely because a backend, Web, or Electron project changed. Run existing broader tests when they provide useful regression confidence.
 

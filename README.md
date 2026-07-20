@@ -22,11 +22,14 @@ The future review phase will review production code and all applicable automated
 
 Plans live at `.xpowers/plans/YYYY-MM-DD-<change-name>.md`. One plan corresponds to one PR. Typo, formatting, and purely mechanical rename changes may skip Xpowers; repository PR rules still apply.
 
-## Dependencies
+## Prerequisite skills
 
-- The `grilling` skill for the planning conversation.
-- The `skills:valuable-tests` skill for test boundaries, cases, doubles, and suite quality during implementation and review.
-- The Subgent CLI and its `interleaved-review` skill for the future review phase.
+Install both skill collections before using Xpowers:
+
+- [Seanforge Skills](https://github.com/seanforge/skills)
+- [Matt Pocock's Skills](https://github.com/mattpocock/skills)
+
+Xpowers references their skills by name instead of vendoring copies. Follow each repository's installation instructions so Claude Code or Codex can discover them.
 
 ## Plugin layout
 
