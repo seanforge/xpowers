@@ -1,0 +1,4 @@
+interface:
+  display_name: "Review"
+  short_description: "Review a completed change before testing"
+  default_prompt: "Use $review to review the completed implementation."

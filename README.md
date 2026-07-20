@@ -12,13 +12,13 @@ Each phase asks before handing off to the next one. There is no workflow runtime
 
 ## Status
 
-The MVP currently contains `xpowers:plan` and `xpowers:implement`.
+The MVP currently contains `xpowers:plan`, `xpowers:implement`, and `xpowers:review`.
 
 Planning uses grilling as its ongoing conversation mode, interleaving repository inspection, up-to-date primary-source research, user decisions, and disposable feasibility spikes as uncertainty demands. It writes a lightweight engineering blueprint only after evidence supports the direction and no material gap remains.
 
-Implementation owns production code and the executable tests needed to establish the changed behavior. It selects the smallest reliable boundary—unit, integration, contract, or end-to-end—rather than imposing a test-level quota. When E2E is warranted, backend behavior runs through the repository's local HTTP/API harness and Web or Electron journeys use its Playwright setup. Long-lived scenarios follow repository conventions and stable product capabilities; generated reports and traces belong in CI artifacts, not Git. The agent uses native task tracking and performs worktree writes sequentially, either directly or through one implementation subagent at a time.
+Implementation completes every in-scope commitment in the latest approved plan, including the executable tests needed to establish the changed behavior. It selects the smallest reliable boundary—unit, integration, contract, or end-to-end—rather than imposing a test-level quota. When E2E is warranted, backend behavior runs through the repository's local HTTP/API harness and Web or Electron journeys use its Playwright setup. Long-lived scenarios follow repository conventions and stable product capabilities; generated reports and traces belong in CI artifacts, not Git. The agent uses native task tracking and performs worktree writes sequentially, either directly or through one implementation subagent at a time.
 
-The future review phase will review production code and all applicable automated tests together, checking that the approved behavior has sufficient coverage before the separate test phase runs it.
+Review runs the Subgent `interleaved-review` loop over the whole change. It checks implementation correctness and plan alignment while reviewing production code and all applicable automated tests together, including coverage quality and flakiness risks. Findings are fixed and re-reviewed until a fresh clean round passes; no review artifact is persisted.
 
 Plans live at `.xpowers/plans/YYYY-MM-DD-<change-name>.md`. One plan corresponds to one PR. Typo, formatting, and purely mechanical rename changes may skip Xpowers; repository PR rules still apply.
 
