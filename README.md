@@ -8,17 +8,15 @@ The intended flow is:
 plan → implement → review → test → normal PR workflow
 ```
 
-Each phase asks before handing off to the next one. There is no workflow runtime, persisted phase state, artifact schema, receipt system, or automatic chaining.
-
-## Status
-
-The MVP currently contains `xpowers:plan`, `xpowers:implement`, and `xpowers:review`.
+Each completed phase recommends the next named skill and asks before handing off. It never invokes the next phase automatically. There is no workflow runtime, persisted phase state, artifact schema, receipt system, or automatic chaining.
 
 Planning uses grilling as its ongoing conversation mode, interleaving repository inspection, up-to-date primary-source research, user decisions, and disposable feasibility spikes as uncertainty demands. It writes a lightweight engineering blueprint only after evidence supports the direction and no material gap remains.
 
 Implementation completes every in-scope commitment in the latest approved plan, including the executable tests needed to establish the changed behavior. It selects the smallest reliable boundary—unit, integration, contract, or end-to-end—rather than imposing a test-level quota. When E2E is warranted, backend behavior runs through the repository's local HTTP/API harness and Web or Electron journeys use its Playwright setup. Long-lived scenarios follow repository conventions and stable product capabilities; generated reports and traces belong in CI artifacts, not Git. The agent uses native task tracking and performs worktree writes sequentially, either directly or through one implementation subagent at a time.
 
 Review runs the Subgent `interleaved-review` loop over the whole change. It checks implementation correctness and plan alignment while reviewing production code and all applicable automated tests together, including coverage quality and flakiness risks. Findings are fixed and re-reviewed until a fresh clean round passes; no review artifact is persisted.
+
+Test formally validates the unchanged, reviewed implementation with repository-native checks and committed change-relevant scenarios against the supported local system. Backend behavior uses the repository's HTTP/API harness, while Web and Electron behavior uses Playwright. Complete historical regression and platform matrices remain merge-CI responsibilities. Any source or test fix invalidates the prior review and returns the change through `xpowers:review` before testing resumes; no test receipt is persisted.
 
 Plans live at `.xpowers/plans/YYYY-MM-DD-<change-name>.md`. One plan corresponds to one PR. Typo, formatting, and purely mechanical rename changes may skip Xpowers; repository PR rules still apply.
 

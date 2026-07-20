@@ -52,4 +52,4 @@ When a disposable prototype expresses a decision more precisely than prose, incl
 
 ## Hand off
 
-Ask the user to review the written plan. Revise it until approved. After approval, commit the plan by itself using the repository's commit conventions, then ask whether to begin implementation. Never start the next phase automatically.
+Ask the user to review the written plan. Revise it until approved. After approval, commit the plan by itself using the repository's commit conventions, then recommend `xpowers:implement` and ask whether to begin it. Never invoke it automatically.

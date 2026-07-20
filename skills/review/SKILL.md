@@ -27,4 +27,4 @@ The review passes only when `interleaved-review` reaches its required fresh clea
 
 ## Finish
 
-Report the clean review result, important fixes made during review, and any residual risk that belongs in test execution. Ask whether to proceed to `xpowers:test`; never invoke it automatically.
+Report the clean review result, important fixes made during review, and any residual risk that belongs in test execution. Recommend `xpowers:test` and ask whether to proceed; never invoke it automatically.

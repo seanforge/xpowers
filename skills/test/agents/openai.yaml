@@ -1,0 +1,4 @@
+interface:
+  display_name: "Test"
+  short_description: "Validate a reviewed change locally"
+  default_prompt: "Use $test to validate the reviewed implementation."

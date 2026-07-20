@@ -39,4 +39,4 @@ Reconcile the implementation against the latest approved plan, commitment by com
 
 This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; `xpowers:review` determines correctness and `xpowers:test` validates it.
 
-Report the outcome, deviations, verification actually run, and remaining risks. Ask whether to proceed to `xpowers:review`; never invoke it automatically or create a handoff artifact.
+Report the outcome, deviations, verification actually run, and remaining risks. Recommend `xpowers:review` and ask whether to proceed; never invoke it automatically or create a handoff artifact.
