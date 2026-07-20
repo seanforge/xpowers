@@ -31,22 +31,24 @@ Create `.xpowers/plans/YYYY-MM-DD-<change-name>.md`, using the current local dat
 
 ## Outcome
 
-What becomes true when this change is complete, including its meaningful boundary.
+What becomes true when this change is complete, including its meaningful boundary. State relevant exclusions when scope could be misread.
 
 ## Blueprint
 
-The research-informed implementation shape: relevant current behavior, boundaries or data flows that change, likely modules or representative paths, and only the tradeoffs, risks, or constraints that affect the direction.
+Confirmed decisions that orient the work: current behavior; affected modules, boundaries, and data flows; interface, API, or schema contracts; cross-boundary interactions; and only architectural choices, user clarifications, risks, or constraints that shape the direction.
 
 ## Validation
 
-The observable behaviors to prove and the appropriate test layers, using the highest useful existing test seam. Include commands only when they are already known and useful.
+Observable external behaviors, surfaces under test, the highest useful existing seams, relevant repository prior art, and change-specific coverage boundaries. Include known, useful commands.
 
 ## Future
 
 Optional. Deferred work, or the boundaries, order, and dependencies of a multi-PR sequence.
 ```
 
-Keep the plan rough, solved, bounded, and verifiable. Preserve only research that affects a decision. Likely paths orient the implementer; they are not binding. Omit task checklists, pseudocode, code snippets, signatures, exact edits, and commit sequences.
+Keep the plan rough, solved, bounded, and verifiable. Preserve only research that affects a decision. Describe decisions without specific file paths, task checklists, pseudocode, ordinary code snippets, exact edits, or commit sequences.
+
+When a disposable prototype expresses a decision more precisely than prose, include only its smallest decision-rich excerpt, such as a state machine, reducer, schema, or type shape, and identify it as prototype evidence.
 
 ## Hand off
 

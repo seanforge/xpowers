@@ -28,4 +28,4 @@ The shared `skills/` tree is exposed through both `.claude-plugin/plugin.json` a
 ## Influences
 
 - [Superpowers](https://github.com/obra/superpowers) informed the shared Claude/Codex plugin layout and skill-oriented workflow.
-- [To Spec](https://github.com/mattpocock/skills/blob/main/skills/engineering/to-spec/SKILL.md) informed the emphasis on repository exploration, decision-relevant findings, and choosing a useful test seam. Xpowers deliberately keeps grilling and avoids exhaustive user stories or implementation-level plans.
+- [Matt Pocock's skills collection](https://github.com/mattpocock/skills), especially To Spec, informed the emphasis on repository exploration, decision-relevant implementation and testing choices, and useful test seams. Xpowers deliberately keeps grilling and avoids exhaustive user stories or implementation-level plans.
