@@ -5,7 +5,7 @@ description: Use when an approved Xpowers plan is ready for implementation in th
 
 # Implement
 
-Turn the approved blueprint into the smallest complete, reviewable change. Follow vertical-slice TDD while leaving execution topology to the agent harness.
+Turn the approved blueprint into the smallest reviewable change through test-driven development.
 
 ## Orient
 
@@ -15,9 +15,11 @@ Turn the approved blueprint into the smallest complete, reviewable change. Follo
 
 ## Execute
 
-Choose direct implementation, subagent-driven work, or parallel execution according to task boundaries, coupling, risk, and harness capabilities. Do not impose one orchestration pattern or per-task review ritual.
+Choose direct work or one implementation subagent at a time. All worktree writes are sequential: finish and verify each change before starting the next. Never allow concurrent writing agents.
 
-Follow TDD at test seams agreed in the plan: red before green, one public seam and one minimal vertical slice at a time. When the plan leaves a seam open, follow repository prior art; ask only if the choice changes a product or architectural decision. Test observable behavior through public interfaces and mock only system boundaries.
+**REQUIRED SUB-SKILL:** Use `skills:valuable-tests` to choose test boundaries, cases, doubles, and suite shape.
+
+At test seams agreed in the plan, follow test-driven development: red before green; one test, one minimal implementation, and one vertical slice at a time. Do not batch all tests before implementation or anticipate later slices. When the plan leaves a seam open, use repository prior art and `skills:valuable-tests`; ask only if the choice changes a product or architectural decision.
 
 Run focused tests and typechecks throughout the work. Keep each passing slice clean; broader refactoring and formal review belong to the review phase.
 
@@ -48,6 +50,6 @@ Stay within repository PR-size guidance and approved scope. Do not perform the s
 
 ## Finish
 
-Inspect the complete diff against the approved plan and repository instructions. Run all change-relevant verification. If verification exposes a defect, return to TDD and re-run affected checks.
+Inspect the complete diff against the approved plan and repository instructions. Run all change-relevant verification. If verification exposes a defect, return to test-driven development and re-run affected checks.
 
 Report the implemented outcome, meaningful deviations, verification actually run, and remaining risks. Ask whether to proceed to `xpowers:review`; never invoke it automatically and create no handoff artifact.
