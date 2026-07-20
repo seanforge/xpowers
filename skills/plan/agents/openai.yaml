@@ -1,0 +1,4 @@
+interface:
+  display_name: "Plan"
+  short_description: "Research and shape a feasible change plan"
+  default_prompt: "Use $plan to research and shape this change before implementation."

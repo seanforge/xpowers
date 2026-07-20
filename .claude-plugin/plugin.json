@@ -1,0 +1,10 @@
+{
+  "name": "xpowers",
+  "version": "0.1.0",
+  "description": "A minimal, research-first development flow for Claude Code and Codex.",
+  "author": {
+    "name": "Xiang Zhang"
+  },
+  "license": "MIT",
+  "keywords": ["development", "planning", "workflow"]
+}

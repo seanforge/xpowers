@@ -1,0 +1,15 @@
+{
+  "name": "xpowers",
+  "description": "The Xpowers personal development flow.",
+  "owner": {
+    "name": "Xiang Zhang"
+  },
+  "plugins": [
+    {
+      "name": "xpowers",
+      "source": "./",
+      "description": "A minimal, research-first development flow.",
+      "version": "0.1.0"
+    }
+  ]
+}
