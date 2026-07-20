@@ -1,4 +1,4 @@
 interface:
   display_name: "Implement"
-  short_description: "Implement an approved change with valuable tests"
+  short_description: "Implement an approved change with proportionate behavioral tests"
   default_prompt: "Use $implement to implement the approved change."
