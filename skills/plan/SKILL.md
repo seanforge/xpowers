@@ -5,14 +5,20 @@ description: Use when a non-mechanical repository change needs an agreed, resear
 
 # Plan
 
-Turn an idea into a feasible, user-approved engineering blueprint. Research before writing; leave implementation detail to the implementing agent.
+Turn an idea into a feasible, user-approved engineering blueprint. Build the direction from current evidence; leave implementation detail to the implementing agent.
 
 ## Shape the change
 
-1. Read the repository instructions. Inspect the relevant code, tests, documentation, and history before proposing a direction. Research current external facts from primary sources when they affect the decision.
-2. Use the `grilling` skill to clarify the desired outcome, observable behavior, scope boundaries, constraints, and user-owned tradeoffs. Ask one decision at a time.
-3. Resolve uncertainties that could invalidate the direction. For a new runtime, framework, database, external service, or architectural dependency, investigate feasibility and consequences and get the user's agreement. Run a disposable spike when reading cannot answer the question; do not turn spike code into production code by accident.
-4. Continue until the direction is feasible and the remaining uncertainty is local implementation judgment. Then ask whether to write the plan.
+Planning is an evidence loop, not a fixed sequence. Use the `grilling` skill as the conversation mode. For each important uncertainty, use whichever action produces the strongest evidence:
+
+- Inspect repository instructions, code, tests, documentation, configuration, and history for the codebase's actual behavior and constraints.
+- Search current primary sources for external facts that shape the direction. Always verify libraries, APIs, tools, platforms, standards, security guidance, and other time-sensitive knowledge, even when the answer feels familiar. Prefer official documentation, release notes, specifications, and source code current at the time of planning.
+- Run a disposable spike when reading cannot establish feasibility. Keep it out of production code.
+- Ask the user one decision at a time when evidence cannot settle a product boundary or meaningful tradeoff.
+
+Treat model memory as a source of search terms, never as evidence. Do not assume that code exists, an API still behaves the same way, a remembered version is current, or an old recommendation remains sound. Separate verified facts from inference.
+
+Repeat until evidence supports a feasible direction, the user-owned decisions are settled, and the remaining uncertainty is local implementation judgment. Then ask whether to write the plan.
 
 Do not invent architecture to fill an information gap. Explore or ask instead.
 

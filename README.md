@@ -12,7 +12,7 @@ Each phase asks before handing off to the next one. There is no workflow runtime
 
 ## Status
 
-The first MVP contains `xpowers:plan`. It researches the repository and relevant external facts, grills unresolved decisions, permits disposable feasibility spikes, and writes a lightweight engineering blueprint only after the direction has no material gap.
+The first MVP contains `xpowers:plan`. Grilling is its ongoing conversation mode, not one stage in a pipeline. It interleaves repository inspection, up-to-date primary-source research, user decisions, and disposable feasibility spikes as the current uncertainty demands. It writes a lightweight engineering blueprint only after evidence supports the direction and no material gap remains.
 
 Plans live at `.xpowers/plans/YYYY-MM-DD-<change-name>.md`. One plan corresponds to one PR. Typo, formatting, and purely mechanical rename changes may skip Xpowers; repository PR rules still apply.
 
