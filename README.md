@@ -8,7 +8,13 @@ The intended flow is:
 plan → implement → review → test → normal PR workflow
 ```
 
-Each completed phase recommends the next named skill and asks before handing off. It never invokes the next phase automatically. There is no workflow runtime, persisted phase state, artifact schema, receipt system, or automatic chaining.
+Each completed phase recommends the next named skill and asks before handing off. It never invokes the next phase automatically. There is no workflow runtime, persisted phase state, machine-enforced artifact schema or lifecycle, receipt system, or automatic chaining.
+
+## Philosophy
+
+Xpowers deliberately does not use spec-driven development. Detailed specifications and workflow artifacts drift from the implementation, duplicate what capable agents can learn from the repository, and can constrain better decisions with stale assumptions. Code and executable tests are the ground truth; skills provide lightweight intent and quality gates without replacing the agent harness's judgment.
+
+The dated `plan.md` is not a living specification. It is a per-PR engineering blueprint produced after evidence-driven grilling: the intended outcome, meaningful boundaries and decisions, and how the change will be validated. It may be revised with the user while that change is in progress. Once the PR is complete, it remains only as a historical snapshot of the direction agreed at that time.
 
 Planning uses grilling as its ongoing conversation mode, interleaving repository inspection, up-to-date primary-source research, user decisions, and disposable feasibility spikes as uncertainty demands. It writes a lightweight engineering blueprint only after evidence supports the direction and no material gap remains.
 
@@ -20,14 +26,15 @@ Test formally validates the unchanged, reviewed implementation with repository-n
 
 Plans live at `.xpowers/plans/YYYY-MM-DD-<change-name>.md`. One plan corresponds to one PR. Typo, formatting, and purely mechanical rename changes may skip Xpowers; repository PR rules still apply.
 
-## Prerequisite skills
+## Prerequisites
 
-Install both skill collections before using Xpowers:
+Install these dependencies before using Xpowers:
 
 - [Seanforge Skills](https://github.com/seanforge/skills)
 - [Matt Pocock's Skills](https://github.com/mattpocock/skills)
+- [Subgent](https://gitlab.com/xiang9156/subgent), including its `sub` CLI and `interleaved-review` skill
 
-Xpowers references their skills by name instead of vendoring copies. Follow each repository's installation instructions so Claude Code or Codex can discover them.
+Xpowers references these tools and skills instead of vendoring them. Follow each repository's installation instructions so the skills and `sub` CLI are available to Claude Code or Codex.
 
 ## Plugin layout
 

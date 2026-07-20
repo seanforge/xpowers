@@ -21,7 +21,7 @@ Follow `interleaved-review` rather than recreating its cross-agent protocol. Add
 
 > Additionally verify that the implementation matches the approved plan. Review production code and tests together. Assess whether the tests provide sufficient behavioral confidence at appropriate boundaries; flag missing or weak cases, tautological or implementation-coupled assertions, misleading doubles, and nondeterminism or flakiness risks.
 
-Keep the same whole-change scope and merge base across rounds. Resolve every valid finding with the smallest in-scope change, using applicable implementation skills. Re-run the review loop after every fix. If a finding invalidates an approved outcome or architectural decision, pause for user direction instead of silently changing the plan.
+Keep the same whole-change scope and merge base across rounds. Resolve every valid finding with the smallest in-scope change, using applicable implementation skills. Re-run the review loop after every fix. If a finding invalidates an approved outcome, product boundary, or architectural decision, pause for user direction instead of silently changing the plan.
 
 The review passes only when `interleaved-review` reaches its required fresh clean round. Review findings and resolutions remain conversational; create no review artifact or receipt.
 

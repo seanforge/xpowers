@@ -1,18 +1,18 @@
 {
   "name": "xpowers",
-  "version": "0.1.0",
-  "description": "A minimal, research-first development flow for Claude Code and Codex.",
+  "version": "0.0.1",
+  "description": "A minimal, evidence-driven development flow for Claude Code and Codex.",
   "author": {
     "name": "Xiang Zhang"
   },
   "skills": "./skills/",
   "interface": {
     "displayName": "Xpowers",
-    "shortDescription": "A minimal, research-first development flow.",
-    "longDescription": "Shape a feasible change, implement it, review the diff, and verify it without replacing the agent harness's native intelligence.",
+    "shortDescription": "A minimal, evidence-driven development flow.",
+    "longDescription": "Shape an evidence-backed change, implement it, review the diff, and test the reviewed result without replacing the agent harness's native intelligence.",
     "developerName": "Xiang Zhang",
     "category": "Productivity",
-    "capabilities": ["Development workflow", "Research-backed planning"],
+    "capabilities": ["Development workflow", "Evidence-driven planning"],
     "defaultPrompt": "Use Xpowers to shape this repository change before implementation."
   }
 }

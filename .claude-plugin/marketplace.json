@@ -8,8 +8,8 @@
     {
       "name": "xpowers",
       "source": "./",
-      "description": "A minimal, research-first development flow.",
-      "version": "0.1.0"
+      "description": "A minimal, evidence-driven development flow.",
+      "version": "0.0.1"
     }
   ]
 }

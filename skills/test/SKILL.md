@@ -30,6 +30,7 @@ Do not mask nondeterminism with fixed sleeps, retries, test order, or widened ti
 
 Never mark a failed, blocked, or unrun required check as passing. Diagnose it first.
 
+- If failure evidence invalidates an approved outcome, product boundary, or architectural decision, pause for user direction instead of treating it as an ordinary test fix.
 - If the environment alone is wrong, correct it and rerun with evidence.
 - If production code, tests, or executable configuration must change, stop validation and make the smallest applicable fix. Then recommend `xpowers:review`; after review passes again, recommend rerunning the complete applicable `xpowers:test` validation set.
 - If an external blocker prevents a required check, report the blocker and stop short of success.

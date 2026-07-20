@@ -1,6 +1,6 @@
 ---
 name: plan
-description: Use when a non-mechanical repository change needs an agreed, research-backed direction before implementation.
+description: Use when a non-mechanical repository change needs an agreed, evidence-backed direction before implementation.
 ---
 
 # Plan
