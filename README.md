@@ -16,7 +16,7 @@ The MVP currently contains `xpowers:plan` and `xpowers:implement`.
 
 Planning uses grilling as its ongoing conversation mode, interleaving repository inspection, up-to-date primary-source research, user decisions, and disposable feasibility spikes as uncertainty demands. It writes a lightweight engineering blueprint only after evidence supports the direction and no material gap remains.
 
-Implementation follows vertical-slice TDD and owns production code plus executable automated tests. Backend changes receive change-scoped local API scenarios; Web and Electron changes receive Playwright scenarios. These tests live in the canonical long-lived suite rather than a separate E2E plan artifact. The agent uses native task tracking and chooses direct, subagent-driven, or parallel execution according to the work instead of following a fixed orchestration.
+Implementation follows TDD and owns production code plus executable automated tests. Backend changes receive change-scoped local API scenarios; Web and Electron changes receive Playwright scenarios. Existing E2E layouts win; otherwise tests live under the nearest product root's `e2e/<domain-or-subsystem>/`, with runtime-specific file suffixes and shared harnesses in `e2e/support/`. Generated reports and traces belong in CI artifacts, not Git. The agent uses native task tracking and chooses direct, subagent-driven, or parallel execution according to the work instead of following a fixed orchestration.
 
 The future review phase will review production code, unit and integration tests, and E2E scripts together, checking that the approved behavior has comprehensive coverage before the separate test phase runs it.
 
