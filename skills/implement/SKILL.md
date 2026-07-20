@@ -17,7 +17,7 @@ Turn the approved blueprint into the smallest complete, reviewable change. Follo
 
 Choose direct implementation, subagent-driven work, or parallel execution according to task boundaries, coupling, risk, and harness capabilities. Do not impose one orchestration pattern or per-task review ritual.
 
-Follow TDD at test seams agreed in the plan. When the plan leaves a seam open, follow repository prior art and choose the strongest useful public boundary; ask only if the choice changes a product or architectural decision. Work in vertical slices, test observable behavior through public interfaces, and mock only system boundaries.
+Follow TDD at test seams agreed in the plan: red before green, one public seam and one minimal vertical slice at a time. When the plan leaves a seam open, follow repository prior art; ask only if the choice changes a product or architectural decision. Test observable behavior through public interfaces and mock only system boundaries.
 
 Run focused tests and typechecks throughout the work. Keep each passing slice clean; broader refactoring and formal review belong to the review phase.
 
