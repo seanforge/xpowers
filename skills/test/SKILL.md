@@ -9,7 +9,7 @@ Validate the reviewed change with executable evidence before the normal reposito
 
 ## Establish scope
 
-- Confirm `xpowers:review` passed for the current implementation. If tracked code, tests, or executable configuration changed afterward, return to review first.
+- Confirm the `xpowers:review` SKILL passed for the current implementation. If tracked code, tests, or executable configuration changed afterward, ask the user to invoke the `xpowers:review` SKILL again before testing.
 - Read the latest approved plan, repository instructions, current diff, review outcome, and residual risks. Derive the validation scope from their observable commitments and the repository's supported commands; create no parallel checklist or test-plan artifact.
 - Validate the current change locally. Merge CI owns the complete historical regression suite, browser or OS matrices, and full E2E unless repository rules require them earlier.
 
@@ -26,13 +26,13 @@ Do not mask nondeterminism with fixed sleeps, retries, test order, or widened ti
 
 ## Handle failures
 
-**CONDITIONAL SUB-SKILL:** Use `diagnosing-bugs` when a failure's cause is unclear.
+**CONDITIONAL SKILL INVOCATION:** Invoke the `diagnosing-bugs` SKILL when a failure's cause is unclear.
 
 Never mark a failed, blocked, or unrun required check as passing. Diagnose it first.
 
 - If failure evidence invalidates an approved outcome, product boundary, or architectural decision, pause for user direction instead of treating it as an ordinary test fix.
 - If the environment alone is wrong, correct it and rerun with evidence.
-- If production code, tests, or executable configuration must change, stop validation and make the smallest applicable fix. Then recommend `xpowers:review`; after review passes again, recommend rerunning the complete applicable `xpowers:test` validation set.
+- If production code, tests, or executable configuration must change, stop validation and make the smallest applicable fix. Then recommend invoking the `xpowers:review` SKILL; after review passes again, recommend invoking the `xpowers:test` SKILL to rerun the complete applicable validation set.
 - If an external blocker prevents a required check, report the blocker and stop short of success.
 
 This phase does not first author missing tests. Missing or inadequate coverage is implementation work and follows the same fix, review, and test loop.

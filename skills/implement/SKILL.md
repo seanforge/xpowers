@@ -9,7 +9,7 @@ Implement every in-scope commitment in the latest approved plan, including its e
 
 ## Orient
 
-- Identify the latest approved plan for the current change in `docs/plans/` and read repository instructions; inspect relevant code, tests, configuration, and history. If the plan is unavailable, ask the user to run planning first.
+- Identify the latest approved plan for the current change in `docs/plans/` and read repository instructions; inspect relevant code, tests, configuration, and history. If the plan is unavailable, ask the user to invoke the `xpowers:plan` SKILL first.
 - Translate the plan's behavioral commitments, implementation decisions, and testing decisions into the harness's native task list. Keep it current; persist no duplicate checklist or workflow state.
 - Verify facts instead of trusting plan-era assumptions or model memory. Decide implementation-local details autonomously. If evidence invalidates a plan-owned outcome, product boundary, or architectural decision, pause, present the evidence, obtain user approval, revise the existing plan in place, then reconcile the task list and continue. Never silently deviate from the plan.
 
@@ -17,9 +17,9 @@ Implement every in-scope commitment in the latest approved plan, including its e
 
 Choose direct work or one implementation subagent at a time. All worktree writes are sequential; never allow concurrent writing agents.
 
-**REQUIRED SUB-SKILLS:** Use `skills:clean-code` and `skills:valuable-tests`.
+**REQUIRED SKILL INVOCATIONS:** Invoke the `skills:clean-code` SKILL and the `skills:valuable-tests` SKILL before changing production code or tests.
 
-**CONDITIONAL SUB-SKILLS:** Use `tdd` where possible, only at seams agreed in the plan. Use `codebase-design` when changing a module, interface, seam, adapter, or architecture. Use `diagnosing-bugs` when a failure remains unexplained. Load repository- or technology-specific skills when triggered.
+**CONDITIONAL SKILL INVOCATIONS:** Invoke the `tdd` SKILL where possible, only at seams agreed in the plan. Invoke the `codebase-design` SKILL when changing a module, interface, seam, adapter, or architecture. Invoke the `diagnosing-bugs` SKILL when a failure remains unexplained. Invoke every repository- or technology-specific SKILL when its trigger applies.
 
 Build production code and its executable tests together; do not defer planned coverage to another phase.
 
@@ -37,6 +37,6 @@ Run the smallest relevant test targets and applicable typechecks throughout. Sta
 
 Reconcile the implementation against the latest approved plan, commitment by commitment. Every in-scope commitment must be implemented or removed through an approved plan revision; never hand incomplete planned work to review. Run the complete change-relevant verification set once. If a defect appears, return to the affected behavior and re-run its checks.
 
-This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; `xpowers:review` determines correctness and `xpowers:test` validates it.
+This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; the `xpowers:review` SKILL determines correctness and the `xpowers:test` SKILL validates it.
 
-Report the outcome, deviations, verification actually run, and remaining risks. Recommend `xpowers:review` and ask whether to proceed; never invoke it automatically or create a handoff artifact.
+Report the outcome, deviations, verification actually run, and remaining risks. Recommend invoking the `xpowers:review` SKILL and ask whether to proceed; never invoke it automatically or create a handoff artifact.

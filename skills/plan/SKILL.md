@@ -9,7 +9,11 @@ Turn a problem into a feasible, user-approved engineering blueprint. Establish t
 
 ## Shape the change
 
-Planning is an evidence loop, not a fixed sequence. Use `grill-with-docs` as the conversation mode so unresolved decisions are interviewed one at a time while domain vocabulary and durable architectural decisions are captured when warranted. For each important uncertainty, use whichever action produces the strongest evidence:
+**REQUIRED SKILL INVOCATION:** Invoke the `grill-with-docs` SKILL before any planning work. Follow the invoked `grill-with-docs` SKILL as the conversation mode so unresolved decisions are interviewed one at a time while domain vocabulary and durable architectural decisions are captured when warranted.
+
+**CONDITIONAL SKILL INVOCATION:** Invoke the `codebase-design` SKILL when planning a module, interface, seam, adapter, or architectural change.
+
+Planning is an evidence loop, not a fixed sequence. For each important uncertainty, use whichever action produces the strongest evidence:
 
 - Inspect repository instructions, domain glossaries, ADRs, code, tests, documentation, configuration, and history for the codebase's actual behavior and constraints.
 - Search current primary sources for external facts that shape the direction. Always verify libraries, APIs, tools, platforms, standards, security guidance, and other time-sensitive knowledge, even when the answer feels familiar. Prefer official documentation, release notes, specifications, and source code current at the time of planning.
@@ -66,4 +70,4 @@ When a disposable prototype expresses a decision more precisely than prose, incl
 
 ## Hand off
 
-Ask the user to review the written plan. Revise it until approved. After approval, commit the plan and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plan. Then recommend `xpowers:implement` and ask whether to begin it. Never invoke it automatically.
+Ask the user to review the written plan. Revise it until approved. After approval, commit the plan and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plan. Then recommend invoking the `xpowers:implement` SKILL and ask whether to begin it. Never invoke it automatically.

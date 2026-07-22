@@ -24,14 +24,16 @@ The lenses are shared coverage requirements, not separate reviewer roles or requ
 
 ## Run the review loop
 
-**REQUIRED SUB-SKILLS:** Use `interleaved-review` for the adversarial review loop and `skills:valuable-tests` for test quality.
+**REQUIRED SKILL INVOCATIONS:** Invoke the `interleaved-review` SKILL for the adversarial review loop and the `skills:valuable-tests` SKILL for test quality.
 
-Follow `interleaved-review` rather than recreating its cross-agent protocol. Include the review contract in every independent and clean-round prompt while leaving each harness's native review judgment intact.
+**CONDITIONAL SKILL INVOCATIONS:** Invoke the `skills:clean-code` SKILL before applying a production-code fix. Invoke the `diagnosing-bugs` SKILL when a finding's cause remains unexplained. Invoke every repository- or technology-specific SKILL when its trigger applies.
 
-Keep the same whole-change scope and merge base across rounds. Resolve every valid finding with the smallest in-scope change, using applicable implementation skills. Re-run the review loop after every fix. If a finding invalidates an approved outcome, product boundary, or architectural decision, pause for user direction instead of silently changing the plan.
+Follow the invoked `interleaved-review` SKILL rather than recreating its cross-agent protocol. Include the review contract in every independent and clean-round prompt while leaving each harness's native review judgment intact.
 
-The review passes only when no valid finding remains under either lens and `interleaved-review` reaches its required fresh clean round. Review findings and resolutions remain conversational; create no review artifact or receipt.
+Keep the same whole-change scope and merge base across rounds. Resolve every valid finding with the smallest in-scope change. Re-run the review loop after every fix. If a finding invalidates an approved outcome, product boundary, or architectural decision, pause for user direction instead of silently changing the plan.
+
+The review passes only when no valid finding remains under either lens and the invoked `interleaved-review` SKILL reaches its required fresh clean round. Review findings and resolutions remain conversational; create no review artifact or receipt.
 
 ## Finish
 
-Report the clean review result, important fixes made during review, and any residual risk that belongs in test execution. Recommend `xpowers:test` and ask whether to proceed; never invoke it automatically.
+Report the clean review result, important fixes made during review, and any residual risk that belongs in test execution. Recommend invoking the `xpowers:test` SKILL and ask whether to proceed; never invoke it automatically.
