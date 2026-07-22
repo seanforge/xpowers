@@ -15,7 +15,7 @@ Implement every in-scope commitment in the latest approved plan, including its e
 
 ## Build and prove behavior
 
-Choose direct work or one implementation subagent at a time. All worktree writes are sequential; never allow concurrent writing agents.
+Choose direct work or one implementation subagent at a time based on the splitted task size. All worktree writes are sequential; never allow concurrent writing agents.
 
 **REQUIRED SKILL INVOCATIONS:** Invoke the `skills:clean-code` SKILL and the `skills:valuable-tests` SKILL before changing production code or tests.
 
