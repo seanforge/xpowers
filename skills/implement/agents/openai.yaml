@@ -1,4 +1,4 @@
 interface:
   display_name: "Xpowers Implement"
-  short_description: "Implement an approved change with proportionate behavioral tests"
+  short_description: "Coordinate subagents to implement and review an approved change"
   default_prompt: "Use $implement to implement the approved change."
