@@ -59,4 +59,8 @@ If either verdict fails, dispatch a fresh fixer subagent with the requirements a
 
 Reconcile the implementation against the latest approved plan commitment by commitment. Implement every in-scope commitment or remove it through an approved plan revision. Run the complete change-relevant verification set once; if a defect appears, return to the affected task and repeat its checks and review.
 
-Report the outcome, deviations, verification run, and remaining risks. The `xpowers:review` SKILL remains the independent whole-change review and the `xpowers:test` SKILL validates that reviewed result. Recommend invoking the `xpowers:review` SKILL and ask whether to proceed; never invoke it automatically or create a handoff artifact.
+Before handoff, dispatch a fresh read-only subagent for an ordinary whole-change review. Its prompt must explicitly require the `skills:clean-code` SKILL, `skills:valuable-tests` SKILL, and `codebase-design` SKILL. Require it to review the complete change for plan completeness, cross-task integration, design quality, delivered value, test quality, and maintainability. This is not the formal `xpowers:review` SKILL.
+
+If the whole-change review finds blocking issues, dispatch a fresh fixer subagent with the exact named implementer SKILL requirements, rerun the affected checks and task reviews, then repeat the whole-change review.
+
+Report the outcome, deviations, verification run, and remaining risks. Recommend invoking the `xpowers:review` SKILL next and ask whether to proceed; never invoke it automatically or create a handoff artifact.
