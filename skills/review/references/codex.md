@@ -4,18 +4,12 @@ Use the native Codex CLI in the repository. Consult `codex review --help` for th
 
 Start the reviewer with `codex review`. Capture the `session id:` printed in its startup output before collecting the result.
 
-Start the finding auditor only when that reviewer first reports findings:
+Resume the reviewer for every later exchange or full re-review:
 
 ```sh
-codex exec --json "<finding-auditor prompt>"
+codex exec resume --json <reviewer-session-id> "<follow-up prompt>"
 ```
 
-Capture `thread_id` from the `thread.started` JSON event.
+When that reviewer first reports findings, use native `spawn_agent` to start a different fresh subagent with the shared finding-auditor role prompt. Capture the returned agent ID and target that same ID with `followup_task` for every later exchange in the round.
 
-Resume either session for every later exchange or re-review:
-
-```sh
-codex exec resume --json <session-id> "<follow-up prompt>"
-```
-
-Keep reviewer and auditor IDs distinct and serialize turns within each session. Do not start an auditor when the reviewer reports no findings.
+Keep reviewer and auditor IDs distinct and serialize turns within each session. Do not proactively terminate or discard the auditor while the loop may resume it. Do not start an auditor when the reviewer reports no findings.

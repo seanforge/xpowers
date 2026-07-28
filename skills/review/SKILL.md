@@ -47,11 +47,11 @@ If the reviewer reports no findings, never start or resume an auditor. The round
 If the reviewer reports findings:
 
 1. Start a fresh auditor for that reviewer round, or resume its existing auditor.
-2. Give the auditor every finding, its reason and evidence, the review contract, and access to relevant code.
-3. Require a brutally skeptical staff-engineer audit of each finding's validity, cause, severity, evidence, and proposed direction. The auditor must not run an independent review or search for unrelated findings.
+2. Read [references/finding-auditor.md](references/finding-auditor.md), use it as the auditor's role prompt, and give the auditor every finding, its reason and evidence, the review contract, and access to relevant code.
+3. Require the auditor to challenge only the submitted findings. It must not run an independent review or search for unrelated findings.
 4. Ask for audit only: no edits, no coordination, and no additional reviewer creation.
 5. Relay complete responses and evidence between reviewer and auditor for as many turns as needed. Preserve lightweight finding IDs and unresolved objections in conversation; create no ledger.
-6. Wait until reviewer and auditor agree on what holds up and the coherent fix direction. Do not adjudicate their unresolved disagreement.
+6. Wait until reviewer and auditor agree on what is valid and material, and on the coherent fix direction. Do not adjudicate their unresolved disagreement.
 
 If reviewer and auditor agree that no finding holds up, require the reviewer to confirm the clean result and apply the clean gate without changing the artifact.
 
