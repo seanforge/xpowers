@@ -5,7 +5,7 @@ description: Use when a repository change requires design decisions, clarificati
 
 # Plan
 
-Explore the codebase and close consequential design gaps with the user, then capture a feasible, user-approved direction for implementation. Establish the behavioral contract and decisions that matter; leave local implementation detail to the implementing agent.
+Explore the codebase and close consequential design gaps with the user, then capture a feasible, user-confirmed direction for implementation. Establish the behavioral contract and decisions that matter; leave local implementation detail to the implementing agent.
 
 ## Shape the change
 
@@ -85,7 +85,7 @@ Explicit exclusions when the boundary could otherwise be misread.
 
 ## Future
 
-Optional. Plausible follow-up work explicitly outside the approved outcome and plan series. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
+Optional. Plausible follow-up work explicitly outside the planned outcome and plan series. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
 ```
 
 Treat the template as coverage prompts, not a demand for exhaustive detail. Keep each plan rough, solved, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision. Describe decisions without implementation file paths, task checklists, pseudocode, ordinary code snippets, exact edits, or commit sequences.
@@ -94,4 +94,4 @@ When a disposable prototype expresses a decision more precisely than prose, incl
 
 ## Hand off
 
-Ask the user to review the written plan or plan series. Revise it until approved. After approval, commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Then recommend invoking the `xpowers:implement` SKILL to implement the first approved plan and ask whether to begin it. Never invoke it automatically.
+Ask the user to review the written plan or plan series. Revise it until the user is satisfied, then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Then recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.

@@ -22,7 +22,7 @@ Do not ask the user to choose, read the other runtime reference, start the other
 
 Fix the intended comparison point, verify that the scope is non-empty, and include the complete change: committed, staged, unstaged, production, and applicable test code.
 
-Use the approved plan as the primary statement of intent when available. For a small planless hotfix, use the explicit intent from the user request, PR, or commits; ask the user only when intent remains ambiguous.
+Use the provided plan as the primary statement of intent when available. For a small planless hotfix, use the explicit intent from the user request, PR, or commits; ask the user only when intent remains ambiguous.
 
 Give every reviewer the complete scope, repository instructions, intent, and a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. Ask for review only: no edits.
 

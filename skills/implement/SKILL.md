@@ -1,6 +1,6 @@
 ---
 name: implement
-description: Use when an approved Xpowers plan is ready for implementation in the current repository.
+description: Use when an Xpowers plan is provided for implementation in the current repository.
 ---
 
 # Implement
@@ -12,7 +12,7 @@ Implement every in-scope commitment in the provided plan, including its executab
 - Resolve the provided plan from the prompt, conversation, and repository context. Read repository instructions and inspect relevant code, tests, configuration, and history. If the plan is missing or genuinely ambiguous, ask the user to invoke the `xpowers:plan` SKILL first or identify the intended plan.
 - Translate the plan's behavioral commitments, implementation decisions, and testing decisions into an ordered task list using the harness's native task tool. Use engineering judgment to shape cohesive, independently verifiable tasks around behavior and meaningful module, interface, or seam boundaries; account for dependencies and integration order. Avoid file-by-file tasks, horizontal layers, mechanical micro-tasks, and fixed size thresholds. Keep the task list current and persist no duplicate checklist or workflow state.
 - Treat model memory as a source of search terms, never as evidence. Before relying on external knowledge or any potentially time-sensitive claim to make or validate an implementation decision, verify it against current primary sources regardless of how familiar or certain it feels. Use official documentation, release notes, specifications, source code, and maintainers' technical guidance; seek strong current open-source implementations when they can provide useful design or integration evidence. Evaluate sources against repository constraints rather than copying them, and separate verified facts from inference.
-- Revalidate plan-era assumptions against current code and evidence. Decide implementation-local details autonomously. If evidence invalidates a plan-owned outcome, product boundary, or architectural decision, pause, present the evidence, obtain user approval, revise the existing plan in place, then reconcile the task list and continue. Never silently deviate from the plan.
+- Revalidate plan-era assumptions against current code and evidence. Decide implementation-local details autonomously. If evidence invalidates a plan-owned outcome, product boundary, or architectural decision, pause, present the evidence, obtain user confirmation, revise the existing plan in place, then reconcile the task list and continue. Never silently deviate from the plan.
 
 ## Implement each task
 
@@ -49,7 +49,7 @@ If either judgment fails, fix the findings, rerun affected checks, and resume th
 
 ## Finish
 
-Reconcile the implementation against the provided plan, commitment by commitment. Every in-scope commitment must be implemented or removed through an approved plan revision; never hand incomplete planned work to review. Run the complete change-relevant verification set once. If a defect appears, return to the affected behavior and re-run its checks.
+Reconcile the implementation against the provided plan, commitment by commitment. Every in-scope commitment must be implemented or removed through a plan revision confirmed by the user; never hand incomplete planned work to review. Run the complete change-relevant verification set once. If a defect appears, return to the affected behavior and re-run its checks.
 
 This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; the `xpowers:review` SKILL determines correctness and the `xpowers:test` SKILL validates it.
 
