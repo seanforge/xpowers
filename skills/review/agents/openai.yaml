@@ -1,4 +1,4 @@
 interface:
-  display_name: "Review"
+  display_name: "Xpowers Review"
   short_description: "Review a completed change before testing"
   default_prompt: "Use $review to review the completed implementation."

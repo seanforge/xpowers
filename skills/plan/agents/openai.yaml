@@ -1,4 +1,4 @@
 interface:
-  display_name: "Plan"
+  display_name: "Xpowers Plan"
   short_description: "Shape an evidence-backed change plan"
   default_prompt: "Use $plan to investigate and shape this change before implementation."
