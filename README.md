@@ -14,6 +14,8 @@ Xpowers intentionally depends on these external skills and projects instead of c
 
 Make each skill and tool available to Claude Code or Codex, following its source's installation instructions where applicable.
 
+After installing or updating Xpowers in Codex, invoke `xpowers:setup` once and restart Codex so its native finding auditor is available. Claude Code receives the same auditor directly from the plugin.
+
 ## What Xpowers combines
 
 - **Plan:** `grill-with-docs` plus an issue-tracker-free adaptation of Matt Pocock's To Spec approach.
@@ -55,6 +57,6 @@ Necessary glossary and ADR changes created during planning are committed with th
 
 ## Plugin layout
 
-The shared `skills/` tree is exposed through both `.claude-plugin/plugin.json` and `.codex-plugin/plugin.json`.
+Plan, implement, review, and test are exposed through both plugins. The Codex plugin additionally exposes `xpowers:setup`, while the Claude plugin directly bundles the auditor agent and does not expose setup.
 
 The Claude marketplace manifest supports installing this repository as a local marketplace during development.

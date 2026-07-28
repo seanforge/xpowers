@@ -1,0 +1,4 @@
+interface:
+  display_name: "Xpowers Setup"
+  short_description: "Install or refresh the Xpowers native Codex auditor."
+  default_prompt: "Set up the Xpowers native finding auditor for Codex."

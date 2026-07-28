@@ -12,6 +12,8 @@ Resume the reviewer for every later exchange or full re-review:
 codex exec resume --json <reviewer-session-id> "<follow-up prompt>"
 ```
 
-On the round's first findings, use native `spawn_agent` to start a different fresh subagent with the shared finding-auditor role prompt. Capture the returned agent ID and target the active auditor ID with `followup_task` for every later exchange in the round. Replacing a failed reviewer does not replace an existing auditor.
+On the round's first findings, use native `spawn_agent` with `agent_type: "xpowers-auditor"` and `fork_turns: "none"` to start a different fresh session. Pass the submitted findings, their reasoning and evidence, the review contract, and the relevant code context. Capture the returned agent ID and target the active auditor ID with `followup_task` for every later exchange in the round. Replacing a failed reviewer does not replace an existing auditor.
+
+If `xpowers-auditor` is unavailable, ask the user to invoke `xpowers:setup` and restart Codex. Do not silently substitute a generic agent.
 
 Keep reviewer and auditor IDs distinct and serialize turns within each session. Do not proactively terminate or discard the auditor while the loop may resume it. Do not start an auditor for a valid no-findings reviewer response.

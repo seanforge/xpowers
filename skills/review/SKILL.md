@@ -50,7 +50,7 @@ The only non-clean handoff is a concrete user decision that evidence cannot sett
 
 ## Reconcile findings
 
-Start with a fresh native reviewer. On the round's first findings, read [references/finding-auditor.md](references/finding-auditor.md) and start its fresh auditor. Give the auditor the findings, their reasoning and evidence, the review contract, and access to the relevant code.
+Start with a fresh native reviewer. On the round's first findings, start the active runtime's Xpowers auditor as a fresh session. Give it the findings, their reasoning and evidence, the review contract, and access to the relevant code.
 
 Treat reconciliation as a direct, evidence-driven argument between reviewer and auditor. Relay each side's complete arguments, objections, and evidence to the other, and require both to answer every unresolved point. Adapt the number and shape of exchanges to the evidence; do not summarize away disagreement or adjudicate it yourself.
 

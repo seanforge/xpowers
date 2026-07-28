@@ -6,5 +6,11 @@
     "name": "Xiang Zhang"
   },
   "license": "MIT",
-  "keywords": ["development", "planning", "workflow"]
+  "keywords": ["development", "planning", "workflow"],
+  "skills": [
+    "./skills/plan/",
+    "./skills/implement/",
+    "./skills/review/",
+    "./skills/test/"
+  ]
 }
