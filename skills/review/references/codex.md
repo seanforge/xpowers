@@ -4,6 +4,8 @@ Use this reference only for Codex invocation and session reuse; keep review judg
 
 Start the reviewer with `codex review`. Capture the `session id:` printed in its startup output before collecting the result.
 
+If a review runs unusually long, inspect the matching `~/.codex/sessions/**/rollout-*<session-id>.jsonl` before treating it as stalled.
+
 Resume the reviewer for every later exchange or full re-review:
 
 ```sh
