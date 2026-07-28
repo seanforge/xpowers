@@ -1,4 +1,4 @@
 interface:
   display_name: "Xpowers Implement"
   short_description: "Implement an approved change with TDD and task review"
-  default_prompt: "Use $implement to implement the approved change."
+  default_prompt: "Use $implement to implement the approved plan."
