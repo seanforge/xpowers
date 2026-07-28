@@ -24,9 +24,9 @@ Fix the intended comparison point, verify that the scope is non-empty, and inclu
 
 Use the approved plan as the primary statement of intent when available. For a small planless hotfix, use the explicit intent from the user request, PR, or commits; ask the user only when intent remains ambiguous.
 
-Give every reviewer the complete scope, repository instructions, intent, and a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. Ask for native review only: no edits, coordination, auditor creation, or coordinating review skill.
+Give every reviewer the complete scope, repository instructions, intent, and a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. Ask for review only: no edits.
 
-Use `skills:valuable-tests` and `skills:clean-code` to shape review criteria. Invoke `skills:clean-code` again before changing production code, and `diagnosing-bugs` when a finding's cause remains unexplained.
+Use `skills:valuable-tests`, `skills:clean-code`, and `codebase-design` to shape every reviewer's criteria. Invoke `skills:clean-code` again before changing production code, `codebase-design` when a fix reshapes modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
 
 ## Preserve the invariants
 
@@ -58,7 +58,7 @@ Guide both roles toward case-by-case engineering judgment. A finding may be tech
 Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction:
 
 - If no finding holds up, require the reviewer to accept the pushback and explicitly confirm no findings.
-- If findings hold up, apply only the agreed root-cause fixes. Ask the user when evidence cannot settle a product, architectural, or scope decision.
+- If findings hold up, you—the coordinator—apply only the agreed root-cause fixes. Ask the user when evidence cannot settle a product, architectural, or scope decision.
 
 ## Fix root causes, not symptoms
 
