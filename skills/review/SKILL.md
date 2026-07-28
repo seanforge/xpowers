@@ -62,9 +62,11 @@ Reconciliation ends only when both roles agree on each finding's validity, mater
 
 ## Fix root causes, not symptoms
 
-Treat the causal explanation as part of finding resolution. Do not accept a fix direction merely because it suppresses the reported symptom; require a coherent account of the violated invariant and why the fix addresses it.
+Treat the causal explanation as part of finding resolution. Judge a fix by whether it corrects the causal model and strengthens a coherent invariant, not merely by whether the current finding disappears.
 
-Persist through a converging fix loop; interrupt a diverging patch loop. Continue coherent root-cause fixes and full re-reviews while risk and complexity converge toward clean. If fixes instead keep surfacing related findings, adding special cases, moving the defect, or materially growing the diff, freeze further editing. Treat the pattern as evidence—not automatic proof—that the design, architecture, or assumed root cause may be wrong. Use `diagnosing-bugs`, return the pattern to the same reviewer and auditor, and reconcile a simpler coherent direction before changing code again. Ask the user if that direction requires a product decision, architectural change, or materially larger scope.
+A converging fix loop makes the system model more coherent while reducing risk and incidental complexity; persist through it to clean. A non-converging loop is revealed when new reviewer findings show fixes proliferating or relocating related problems. Treat that pattern as evidence—not automatic proof—that the causal model, design, or architecture may be wrong.
+
+On non-convergence, freeze editing before another fix. Use `diagnosing-bugs`, return the current finding and pattern to the same reviewer and auditor, and reconcile a simpler coherent direction before changing code again. Ask the user only when that direction requires a product decision, architectural change, or materially larger scope.
 
 After a coherent fix, resume the same reviewer and ask for a full review of the complete current change. Resume its auditor only if that review produces findings.
 

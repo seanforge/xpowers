@@ -50,7 +50,7 @@ After any reviewer returns no findings, never run the auditor. Then decide wheth
 
 Treat a code change as substantial when multiple modules interact; lifecycle, concurrency, persistence, protocol, security, or recovery behavior changes; review fixes materially grow or reshape the code diff; a defect could affect multiple sessions, users, or stored data; or either review role requests clean-room confirmation. These are judgment signals, not a checklist or line-count threshold, and they do not apply to non-code artifacts.
 
-Root cause is part of finding resolution, not an afterthought. Persist through a converging fix loop; interrupt a diverging patch loop. If fixes repeatedly surface related findings, add special cases, move the defect, or materially grow the diff, freeze further editing and treat the pattern as evidence—not automatic proof—that the design, architecture, or assumed root cause may be wrong. Reconcile a coherent direction before editing again; if it requires a redesign, public-contract change, or materially larger refactor outside the approved scope, ask the user.
+Root cause is part of finding resolution, not an afterthought. Judge fixes by whether they correct the causal model and strengthen coherent invariants, not merely by whether the current finding disappears. A converging loop makes the system model more coherent while reducing risk and incidental complexity; a non-converging loop produces new findings that show fixes proliferating or relocating related problems. On non-convergence, freeze further editing and reconcile a coherent direction. Ask the user only when that direction requires a redesign, public-contract change, or materially larger refactor outside the approved scope.
 
 ## Testing decisions
 
