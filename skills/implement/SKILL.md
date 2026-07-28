@@ -7,44 +7,42 @@ description: Use when an approved Xpowers plan is ready for implementation in th
 
 Implement every in-scope commitment in the latest approved plan, including its executable evidence, as a reviewable change.
 
-## Orient
+## Ground the implementation
 
-- Identify the latest approved plan for the current change in `docs/plans/` and read repository instructions; inspect relevant code, tests, configuration, and history. If the plan is unavailable, ask the user to invoke the `xpowers:plan` SKILL first.
-- Act as implementation coordinator. Use your native task tool to split the plan into ordered tasks and keep it current; create no duplicate progress or workflow state. Apply engineering judgment: each task must have cohesive behavior, explicit scope, a clean boundary, known dependencies, and enough focus for a fresh implementer and reviewer. Avoid monoliths, mechanical micro-tasks, and fixed size thresholds.
+- Find the latest approved plan for the current change in `docs/plans/` and read repository instructions; inspect relevant code, tests, configuration, and history. If the plan is unavailable, ask the user to invoke the `xpowers:plan` SKILL first.
+- Translate the plan's behavioral commitments, implementation decisions, and testing decisions into an ordered task list using the harness's native task tool. Use engineering judgment to shape cohesive, independently verifiable tasks around behavior and meaningful module, interface, or seam boundaries; account for dependencies and integration order. Avoid file-by-file tasks, horizontal layers, mechanical micro-tasks, and fixed size thresholds. Keep the task list current and persist no duplicate checklist or workflow state.
 - Verify facts instead of trusting plan-era assumptions or model memory. Decide implementation-local details autonomously. If evidence invalidates a plan-owned outcome, product boundary, or architectural decision, pause, present the evidence, obtain user approval, revise the existing plan in place, then reconcile the task list and continue. Never silently deviate from the plan.
 
-## Build and prove behavior
+## Implement each task
 
-Do not implement production code or tests yourself. Run one task at a time:
+Complete one task at a time.
 
-1. When a task begins, dispatch a fresh implementer subagent. Give it the plan path, exact task scope and commitments, dependencies and established interfaces, repository instructions, and only the context needed for that task. Require it to implement code and tests, run focused checks, self-review, fix its findings, and report results and concerns.
-2. After implementation, dispatch a different fresh, read-only reviewer subagent. Give it the same task requirements, repository instructions, implementer report and verification evidence, and the code and test changes attributable to the task.
-3. Require the reviewer to treat the implementer report as unverified claims and return two evidence-backed verdicts: `requirements satisfied` and `task quality approved`. Do not pre-judge or suppress findings in its prompt.
-4. If either verdict fails, dispatch a fresh fixer subagent with the requirements and findings, rerun affected checks, then dispatch a fresh reviewer. Repeat until both verdicts pass.
-5. Only then complete the task in the native task tool and begin the next task. Never allow multiple agents to modify files concurrently.
+Invoke the TDD skill (`tdd`) before implementation. Establish the test seams agreed in the plan before writing tests; if the plan does not establish the required seams, pause and confirm them with the user. Use the TDD skill's red-green vertical slices to drive the implementation.
 
-Every implementer and fixer prompt must explicitly require:
+Invoke the `skills:clean-code` SKILL before changing production code or tests.
 
-- Invoke the `skills:clean-code` SKILL before changing production code or tests.
-- Invoke the `skills:valuable-tests` SKILL before changing tests.
-- Invoke the `tdd` SKILL where possible, only at seams agreed in the plan.
-- Invoke the `codebase-design` SKILL when changing a module, interface, seam, adapter, or architecture.
-- Invoke the `diagnosing-bugs` SKILL when a failure remains unexplained.
-- Invoke every repository- or technology-specific SKILL whose trigger applies.
+Invoke the `skills:valuable-tests` SKILL before changing tests.
 
-Every reviewer prompt must explicitly require the `skills:clean-code` SKILL and the `skills:valuable-tests` SKILL, plus the `codebase-design` SKILL when the task changes a module, interface, seam, adapter, or architecture. This task review does not invoke the formal `xpowers:review` SKILL.
+Invoke the `codebase-design` SKILL before changing a module, interface, seam, adapter, or architecture. Invoke the `diagnosing-bugs` SKILL when a failure remains unexplained, and invoke every repository- or technology-specific SKILL whose trigger applies.
 
 Build production code and its executable tests together; do not defer planned coverage to another phase.
 
-Choose the smallest reliable test boundary for the behavior and its realistic failure mode. Use broader integration, contract, or end-to-end coverage only for properties narrower tests cannot establish.
+Run focused tests and applicable typechecks throughout the task. Stay within scope and repository PR-size guidance.
 
-There is no test-level quota. Do not duplicate assertions across layers or add E2E merely because a backend, Web, or Electron project changed. Run existing broader tests when they provide useful regression confidence.
+### Review the task
 
-When E2E is warranted, own its executable source—never a prose plan. Exercise the local system through public interfaces with the repository's HTTP/API harness or Playwright setup. Preserve conventions, organize scenarios by stable capability or subsystem, and keep setup, readiness, assertions, and cleanup deterministic.
+After the task's implementation and focused checks, start a fresh read-only reviewer subagent scoped to that task. Do not substitute the implementer's self-review for this independent review.
 
-If no local harness exists, add the smallest reusable one only within scope and PR budget; otherwise surface a prerequisite. Commit test source, fixtures, and configuration; keep generated reports, traces, videos, and screenshots in CI artifacts. Run change-relevant scenarios locally and the historical suite in merge CI.
+Give the reviewer the task's plan commitments, relevant implementation and testing decisions, repository instructions, attributable code and test changes, and verification evidence. Require it to treat implementation reports as unverified claims and independently assess:
 
-Run the smallest relevant test targets and applicable typechecks throughout. Stay within scope and PR-size guidance. Formal review remains separate.
+- **Requirements satisfied:** the task is complete, correctly understood, within scope, and consistent with the plan.
+- **Task quality approved:** the implementation is correct, maintainable, appropriately tested, and supported by sufficient executable evidence.
+
+Require the reviewer to invoke the `skills:clean-code` and `skills:valuable-tests` SKILLs, plus the `codebase-design` SKILL when the task changes a module, interface, seam, adapter, or architecture. Do not pre-judge or suppress findings in the reviewer prompt.
+
+Keep the reviewer confined to the task's commitments, attributable changes, and focused evidence. Do not ask it to inspect unrelated work, review the whole change, or declare the change clean. The `xpowers:review` SKILL owns cross-task interactions, integration risks, and whole-change correctness.
+
+If either judgment fails, fix the findings, rerun affected checks, and resume the same task reviewer. Repeat until both judgments pass. Only then complete the task in the native task tool and begin the next task with a fresh reviewer. This task-level review does not invoke or replace the formal `xpowers:review` SKILL.
 
 ## Finish
 
