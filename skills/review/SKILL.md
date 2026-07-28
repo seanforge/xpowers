@@ -50,7 +50,7 @@ If the reviewer reports findings:
 2. Read [references/finding-auditor.md](references/finding-auditor.md), use it as the auditor's role prompt, and give the auditor every finding, its reason and evidence, the review contract, and access to relevant code.
 3. Require the auditor to challenge only the submitted findings. It must not run an independent review or search for unrelated findings.
 4. Ask for audit only: no edits, no coordination, and no additional reviewer creation.
-5. Relay complete responses and evidence between reviewer and auditor for as many turns as needed. Preserve lightweight finding IDs and unresolved objections in conversation; create no ledger.
+5. Relay each side's complete arguments, objections, and evidence to the other, and require each role to answer the other's unresolved points. Continue for as many turns as needed without summarizing away disagreement. Preserve lightweight finding IDs in conversation; create no ledger.
 6. Wait until reviewer and auditor agree on what is valid and material, and on the coherent fix direction. Do not adjudicate their unresolved disagreement.
 
 If reviewer and auditor agree that no finding holds up, require the reviewer to confirm the clean result and apply the clean gate without changing the artifact.
