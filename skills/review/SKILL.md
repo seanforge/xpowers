@@ -70,7 +70,7 @@ After a coherent fix, resume the same reviewer and ask for a full review of the 
 
 ## Require independent clean confirmation
 
-The initial reviewer is already fresh. If it initially reports no findings, stop.
+Freshness applies only to a reviewer's first result. The initial reviewer is already fresh, so if it initially reports no findings, stop. Once any fresh reviewer reports a finding, it becomes a working reviewer; a later clean result from that same session does not satisfy the independent fresh gate.
 
 When a working reviewer confirms clean after reconciliation or fixes, stop for non-code or non-substantial code changes. For substantial code changes, always require a final fresh-reviewer round with no prior findings or expected verdict. This gate counters anchoring and overconfidence in the working sessions; same-session confidence is not independent confirmation.
 
