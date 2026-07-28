@@ -12,6 +12,6 @@ Resume the reviewer for every later exchange or full re-review:
 codex exec resume --json <reviewer-session-id> "<follow-up prompt>"
 ```
 
-When that reviewer first reports findings, use native `spawn_agent` to start a different fresh subagent with the shared finding-auditor role prompt. Capture the returned agent ID and target that same ID with `followup_task` for every later exchange in the round.
+On the round's first findings, use native `spawn_agent` to start a different fresh subagent with the shared finding-auditor role prompt. Capture the returned agent ID and target the active auditor ID with `followup_task` for every later exchange in the round. Replacing a failed reviewer does not replace an existing auditor.
 
-Keep reviewer and auditor IDs distinct and serialize turns within each session. Do not proactively terminate or discard the auditor while the loop may resume it. Do not start an auditor when the reviewer reports no findings.
+Keep reviewer and auditor IDs distinct and serialize turns within each session. Do not proactively terminate or discard the auditor while the loop may resume it. Do not start an auditor for a valid no-findings reviewer response.
