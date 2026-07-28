@@ -11,12 +11,12 @@ Establish a trustworthy conclusion about the complete current change before form
 
 Act only as coordinator. Own the review contract, session orchestration, evidence relay, authorized fixes, and stop decision. Never substitute your judgment for the reviewer or finding auditor.
 
-Use only the active runtime and read its reference:
+Identify the agent harness currently running you, then read exactly its matching reference:
 
-- Claude Code: [references/claude.md](references/claude.md)
-- Codex: [references/codex.md](references/codex.md)
+- If you are running in Claude Code, read [references/claude.md](references/claude.md).
+- If you are running in Codex, read [references/codex.md](references/codex.md).
 
-Never start the other runtime or invoke a cross-model review workflow.
+Do not ask the user to choose, read the other runtime reference, start the other runtime, or invoke a cross-model review workflow.
 
 ## Establish the review contract
 
