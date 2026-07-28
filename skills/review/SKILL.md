@@ -30,6 +30,7 @@ Use `skills:valuable-tests`, `skills:clean-code`, and `codebase-design` to shape
 
 ## Preserve the invariants
 
+- Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
 - A reviewer and auditor always occupy different sessions.
 - A reviewer defines one round. Its auditor exists only if that reviewer reports findings, and stays paired with it throughout that round.
 - Preserve both session handles and reuse the same pair while the round continues.
@@ -43,7 +44,7 @@ Retry every failed, timed-out, empty, delegated, or invalid review or audit resu
 
 ## Drive to completion
 
-Persist until the applicable clean gate passes. Do not stop at a progress update, a pending reviewer or auditor, an unresolved finding, or an applied fix. Do not ask the user whether to continue ordinary review-and-fix rounds. Wait for active work, recover or resume reusable sessions, and keep driving reconciliation, fixes, and full re-review.
+Persist until the applicable clean outcome is established. Do not stop at a progress update, a pending reviewer or auditor, an unresolved finding, or an applied fix. Do not ask the user whether to continue ordinary review-and-fix rounds. Wait for active work, recover or resume reusable sessions, and keep driving reconciliation, fixes, and full re-review.
 
 The only non-clean handoff is a concrete user decision that evidence cannot settle or a genuine external blocker that remains after reasonable recovery. Persistence means owning the outcome, not defending a failing implementation direction.
 
@@ -57,8 +58,8 @@ Guide both roles toward case-by-case engineering judgment. A finding may be tech
 
 Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction:
 
-- If no finding holds up, require the reviewer to accept the pushback and explicitly confirm no findings.
-- If findings hold up, you—the coordinator—apply only the agreed root-cause fixes. Ask the user when evidence cannot settle a product, architectural, or scope decision.
+- If both agree no finding holds up, require the reviewer to explicitly confirm no findings.
+- If both agree findings hold up, you—the coordinator—apply only the agreed root-cause fixes. Ask the user when evidence cannot settle a product, architectural, or scope decision.
 
 ## Fix root causes, not symptoms
 
@@ -70,15 +71,17 @@ On non-convergence, freeze editing before another fix. Use `diagnosing-bugs`, re
 
 After a coherent fix, resume the same reviewer and ask for a full review of the complete current change. Resume its auditor only if that review produces findings.
 
-## Require independent clean confirmation
+## Complete rounds and reset context
 
-Freshness applies only to a reviewer's first result. The initial reviewer is already fresh, so if it initially reports no findings, stop. Once any fresh reviewer reports a finding, it becomes a working reviewer; a later clean result from that same session does not satisfy the independent fresh gate.
+Use the round as the unit of review confidence. It begins with a fresh reviewer examining the complete current scope, may contain any number of audit, reconciliation, coordinator-fix, and full re-review loops in the same reviewer/auditor sessions, and ends only when its reviewer explicitly confirms no findings. Findings rejected through reconciliation can therefore end a round without changing the artifact.
 
-When a working reviewer confirms clean after reconciliation or fixes, stop for non-code or non-substantial code changes. For substantial code changes, always require a final fresh-reviewer round with no prior findings or expected verdict. This gate counters anchoring and overconfidence in the working sessions; same-session confidence is not independent confirmation.
+Freshness constrains a round's starting context, not the evidence it develops. Reconciliation tests findings without consuming freshness; changing the artifact entangles the sessions with work they helped shape. A round is changed after any review-driven edit, even if that edit is later reverted.
 
-If the fresh reviewer reports findings, create its fresh auditor and treat them as the new working pair. Continue until a fresh reviewer reports no findings.
+For substantial code, every changed round must be followed by another fresh-session round over the complete current scope, with no prior findings or expected verdict. Apply the same rule to every subsequent round until one ends with no findings and without changing the artifact. Freshness resets accumulated context and its bias; it never narrows the review to a delta.
 
-Judge substantial code by risk and interaction, not line count. Signals include changes across modules; lifecycle, concurrency, persistence, protocol, security, or recovery behavior; review fixes that materially reshape the diff; defects that could affect multiple sessions, users, or stored data; or a review role requesting clean-room confirmation. Non-code artifacts never require the final fresh gate.
+For non-code or non-substantial code, a round ending with no findings is sufficient even when it contained fixes.
+
+A code change is substantial when its behavioral reach, coupling, or failure impact cannot be understood as a local, isolated edit. Judge the actual system and its risks, not line count, a checklist, or enumerated cases.
 
 ## Finish
 
