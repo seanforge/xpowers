@@ -85,7 +85,7 @@ Explicit exclusions when the boundary could otherwise be misread.
 
 ## Future
 
-Optional. Deferred work outside the approved plan or plan series, including known boundaries, order, and dependencies.
+Optional. Plausible follow-up work explicitly outside the approved outcome and plan series. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
 ```
 
 Treat the template as coverage prompts, not a demand for exhaustive detail. Keep each plan rough, solved, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision. Describe decisions without implementation file paths, task checklists, pseudocode, ordinary code snippets, exact edits, or commit sequences.
