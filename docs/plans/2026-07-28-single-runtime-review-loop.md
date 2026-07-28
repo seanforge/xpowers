@@ -44,7 +44,7 @@ FRESH REVIEWER
                                            └─ substantial code ─────────────────► FRESH REVIEWER
 ```
 
-The initial reviewer is already fresh, so an initially clean review always stops. The final fresh gate applies only after a working pair has fixed findings and reached a clean same-session re-review.
+The initial reviewer is already fresh, so an initially clean review always stops. The final fresh gate applies after a working pair has reconciled its findings and the reviewer has confirmed a clean result, whether agreement required fixes or rejected every finding.
 
 After any reviewer returns no findings, never run the auditor. Then decide whether another fresh-session round is required: start a fresh reviewer only when a substantial code change has just reached clean in its working sessions; otherwise stop. The fresh reviewer starts a fresh auditor only if it reports findings, completing the new working pair.
 

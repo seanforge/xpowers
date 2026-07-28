@@ -63,7 +63,7 @@ After a fix, resume the same reviewer and require a full review of the complete 
 
 Treat the initial reviewer as already fresh. If it reports no findings, stop.
 
-When a working reviewer returns clean after fixes:
+When a working reviewer returns clean after reconciliation or fixes:
 
 - Stop for non-code or non-substantial code changes.
 - For substantial code changes, start a new round with a fresh reviewer and no prior findings or expected verdict.
