@@ -1,6 +1,6 @@
 {
   "name": "xpowers",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A minimal, evidence-driven development flow for Claude Code and Codex.",
   "author": {
     "name": "Xiang Zhang"

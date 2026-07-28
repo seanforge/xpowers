@@ -11,7 +11,6 @@ Xpowers intentionally depends on these external skills and projects instead of c
 - [Matt Pocock's Skills](https://github.com/mattpocock/skills) is the primary foundation for planning and implementation. Xpowers directly uses its skills and adapts ideas from To Spec and Code Review.
 - Claude Code's official `/code-review` skill supplies the Claude-side native reviewer.
 - My [Seanforge Skills](https://github.com/seanforge/skills) repository provides the required `clean-code` and `valuable-tests` skills.
-- An available `interleaved-review` skill coordinates the independent native reviewers.
 
 Make each skill and tool available to Claude Code or Codex, following its source's installation instructions where applicable.
 
@@ -19,7 +18,7 @@ Make each skill and tool available to Claude Code or Codex, following its source
 
 - **Plan:** `grill-with-docs` plus an issue-tracker-free adaptation of Matt Pocock's To Spec approach.
 - **Implement:** Matt Pocock's `tdd` at agreed seams, alongside Seanforge's `clean-code` and `valuable-tests` skills.
-- **Review:** each harness's native reviewer—Claude Code `/code-review` and Codex `/review`—coordinated through `interleaved-review`.
+- **Review:** the active harness's native reviewer plus a separate same-runtime finding auditor, coordinated by Xpowers.
 - **Test:** repository-native checks and committed scenarios, kept separate from implementation and review.
 
 Xpowers owns the cross-skill contract, not the underlying capabilities. External skills remain independent dependencies and each agent harness keeps its native reasoning, task tracking, and review judgment.
@@ -46,7 +45,7 @@ Planning uses `grill-with-docs` as its conversation mode. It combines repository
 
 Implementation completes every in-scope commitment and its executable evidence. It uses `tdd` where possible at plan-agreed seams and runs focused checks throughout before one complete change-relevant verification pass.
 
-Review gives both native reviewers the same plan, merge base, complete change, and repository instructions. Both inspect intent alignment and engineering soundness through Xpowers's interleaved review protocol.
+Review keeps the active agent as coordinator. A native reviewer inspects the complete change, and a separate same-runtime auditor brutally challenges its findings before the coordinator applies agreed fixes.
 
 Test formally validates the unchanged, reviewed implementation with repository-native checks. Any source or test fix invalidates the review result and sends the change back through `xpowers:review`.
 
