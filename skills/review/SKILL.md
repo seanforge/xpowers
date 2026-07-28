@@ -39,7 +39,7 @@ Use `skills:valuable-tests`, `skills:clean-code`, and `codebase-design` to shape
 - A failed, timed-out, empty, delegated, or invalid result never counts as clean. Neither does a fix, elapsed time, or coordinator confidence.
 - Never leave a disputed finding unresolved or create a parallel finding ledger.
 
-After a transient call failure, resume the saved reviewer or auditor session. If that session cannot be resumed reliably, create a fresh replacement for only that role, give it the complete review contract and unresolved context, and keep the other role unchanged.
+Retry every failed, timed-out, empty, delegated, or invalid review or audit result. Prefer retrying or resuming the saved session. If that session cannot be resumed reliably, create a fresh replacement for only that role, give it the complete review contract and unresolved context, and keep the other role unchanged.
 
 ## Drive to completion
 
