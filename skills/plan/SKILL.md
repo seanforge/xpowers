@@ -46,6 +46,8 @@ Treat each plan as a dated decision snapshot for its PR, not a living source of 
 
 ## Write the plan
 
+Write each plan as a resumable implementation handoff: concise for an engineer who knows the context, yet explicit enough for a fresh agent to recover the necessary context from the repository and referenced plans, assess completeness, and implement without rediscovering settled decisions.
+
 Create one plan file per PR under `docs/plans/`, using the current local date and concise kebab-case names. Use `YYYY-MM-DD-<change-name>.md` for a standalone plan and `YYYY-MM-DD-<series>-NN-<slice>.md` for an ordered series.
 
 ```markdown
@@ -61,19 +63,19 @@ Size guidance: <repository instruction source or Xpowers fallback>
 
 ## Problem
 
-The problem and relevant current behavior, from the affected user's or operator's perspective.
+The problem and relevant current behavior addressed by this plan, with the minimum product and technical context needed for implementation. In a series, the first plan also carries the shared background and overall goal.
 
 ## Outcome
 
-What becomes true from that perspective when the change is complete, including its meaningful boundary.
+What becomes true when this plan is implemented, from the affected user's or operator's perspective when applicable, including its meaningful boundary.
 
 ## Behavioral commitments
 
 A numbered list of observable success, failure, and boundary behaviors the implementation must satisfy. Use actor, intent, and benefit when they clarify a user-facing behavior; do not force user-story syntax onto internal engineering work.
 
-## Implementation decisions
+## Implementation outline
 
-Confirmed direction-level decisions that orient the work: affected modules, interfaces, data flows, API or schema contracts, cross-boundary interactions, architectural choices, material alternatives and trade-offs, user clarifications, risks, and constraints. Include compatibility, migration, rollout or rollback, and observability only when they materially affect the change.
+The expected code shape for implementing this plan: affected modules, directories, and significant files when useful; responsibilities, interfaces, types, functions, or components to create or change; intended data and control flow across boundaries; and prerequisite refactoring. State what each named area is expected to do, not its detailed implementation. Include architectural choices, material alternatives and trade-offs, user clarifications, risks, constraints, and compatibility, migration, rollout, rollback, or observability only when they materially shape the outline.
 
 ## Testing decisions
 
@@ -88,7 +90,7 @@ Explicit exclusions when the boundary could otherwise be misread.
 Optional. Plausible follow-up work explicitly outside the planned outcome and plan series. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
 ```
 
-Treat the template as coverage prompts, not a demand for exhaustive detail. Keep each plan rough, solved, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision. Describe decisions without implementation file paths, task checklists, pseudocode, ordinary code snippets, exact edits, or commit sequences.
+Treat the template as coverage prompts, not a demand for exhaustive detail. Keep each plan rough, solved, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision. Describe the implementation outline without task checklists, exhaustive file inventories, pseudocode, ordinary code snippets, exact edits, or commit sequences. Use concrete paths when they clarify ownership; say what changes there, not how to code it.
 
 When a disposable prototype expresses a decision more precisely than prose, include only its smallest decision-rich excerpt, such as a state machine, reducer, schema, or type shape, and identify it as prototype evidence.
 
