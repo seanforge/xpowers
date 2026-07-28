@@ -9,7 +9,7 @@ Turn a problem into a feasible, user-approved engineering blueprint. Establish t
 
 ## Shape the change
 
-**REQUIRED SKILL INVOCATION:** Invoke the `grill-with-docs` SKILL before any planning work. Follow the invoked `grill-with-docs` SKILL as the conversation mode so unresolved decisions are interviewed one at a time while domain vocabulary and durable architectural decisions are captured when warranted.
+**REQUIRED PLANNING MODE:** Before any planning work, run a `grilling` session using the `domain-modeling` SKILL so unresolved decisions are interviewed one at a time while domain vocabulary and durable architectural decisions are captured when warranted.
 
 **CONDITIONAL SKILL INVOCATION:** Invoke the `codebase-design` SKILL when planning a module, interface, seam, adapter, or architectural change.
 
