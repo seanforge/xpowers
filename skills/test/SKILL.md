@@ -10,7 +10,7 @@ Validate the reviewed change with executable evidence before the normal reposito
 ## Establish scope
 
 - Confirm the `xpowers:review` SKILL passed for the current implementation. If tracked code, tests, or executable configuration changed afterward, ask the user to invoke the `xpowers:review` SKILL again before testing.
-- Read the latest approved plan, repository instructions, current diff, review outcome, and residual risks. Derive the validation scope from their observable commitments and the repository's supported commands; create no parallel checklist or test-plan artifact.
+- Read repository instructions, the current diff, review outcome, residual risks, and the approved plan when available. For a planless hotfix, use the explicit intent from the user request, PR, or commits as established during review. Derive the validation scope from the applicable commitments and the repository's supported commands; create no parallel checklist or test-plan artifact.
 - Validate the current change locally. Merge CI owns the complete historical regression suite, browser or OS matrices, and full E2E unless repository rules require them earlier.
 
 ## Execute
