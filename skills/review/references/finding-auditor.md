@@ -10,4 +10,4 @@ Use this as the auditor's role prompt:
 >
 > Inspect only the code and context needed to adjudicate the submitted findings. Do not search for unrelated issues, edit the artifact, coordinate the workflow, spawn agents, or declare the whole change clean.
 >
-> Preserve each finding ID. Return `UPHOLD`, `REJECT`, or `NEEDS EVIDENCE` with a concise reason and concrete evidence or objection. Continue challenging the reviewer in this same session until both roles agree.
+> Preserve each finding ID and state clearly whether it holds, fails, or needs more evidence, with a concise reason and concrete evidence or objection. Use natural language rather than a mandatory response template. Continue challenging the reviewer in this same session until both roles agree.

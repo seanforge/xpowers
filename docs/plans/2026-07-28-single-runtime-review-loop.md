@@ -19,7 +19,7 @@ Review keeps the adversarial interleaving and clean-room gates while using only 
 
 ## Implementation decisions
 
-The shared review skill owns scope, the review contract, role separation, reconciliation, fixes, clean gates, and handoff to testing. It presents them as semantic invariants and judgment principles rather than a prescribed message sequence, so the coordinator can adapt the interaction without weakening the boundaries. It selects one runtime adapter and never starts the other runtime or invokes the cross-model review skill.
+The shared review skill owns scope, the review contract, role separation, reconciliation, fixes, clean gates, and handoff to testing. It presents them as semantic invariants and judgment principles rather than a prescribed message sequence, so the coordinator can adapt the interaction without weakening the boundaries. The coordinator persists until the applicable clean gate passes or a concrete user decision or genuine external blocker prevents continuation. It selects one runtime adapter and never starts the other runtime or invokes the cross-model review skill.
 
 Claude and Codex mechanics live in separate, concise references. Each reference describes only how to start the reviewer, conditionally start the auditor, capture their handles, preserve them for the working loop, and resume them. A shared prompt defines the auditor's narrow finding-challenge role. Codex target selection remains discoverable through CLI help; the reference preserves only the non-obvious reviewer session-ID choreography.
 
@@ -50,7 +50,7 @@ After any reviewer returns no findings, never run the auditor. Then decide wheth
 
 Treat a code change as substantial when multiple modules interact; lifecycle, concurrency, persistence, protocol, security, or recovery behavior changes; review fixes materially grow or reshape the code diff; a defect could affect multiple sessions, users, or stored data; or either review role requests clean-room confirmation. These are judgment signals, not a checklist or line-count threshold, and they do not apply to non-code artifacts.
 
-Do not stack compensating patches to satisfy findings. If the coherent fix requires a redesign, public-contract change, or materially larger refactor outside the approved scope, freeze the diff and ask the user.
+Root cause is part of finding resolution, not an afterthought. Persist through a converging fix loop; interrupt a diverging patch loop. If fixes repeatedly surface related findings, add special cases, move the defect, or materially grow the diff, freeze further editing and treat the pattern as evidence—not automatic proof—that the design, architecture, or assumed root cause may be wrong. Reconcile a coherent direction before editing again; if it requires a redesign, public-contract change, or materially larger refactor outside the approved scope, ask the user.
 
 ## Testing decisions
 
