@@ -1,6 +1,6 @@
 # Codex runtime
 
-Use the native Codex CLI in the repository. Consult `codex review --help` for the locally installed target and prompt options; keep the shared review contract in the reviewer request.
+Use this reference only for Codex invocation and session reuse; keep review judgment in the core skill. Use the native Codex CLI in the repository. Consult `codex review --help` for the locally installed target and prompt options; keep the shared review contract in the reviewer request.
 
 Start the reviewer with `codex review`. Capture the `session id:` printed in its startup output before collecting the result.
 

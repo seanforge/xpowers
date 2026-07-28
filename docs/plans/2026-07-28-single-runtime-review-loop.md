@@ -19,7 +19,7 @@ Review keeps the adversarial interleaving and clean-room gates while using only 
 
 ## Implementation decisions
 
-The shared review skill owns scope, the review contract, role separation, reconciliation, fixes, clean gates, and handoff to testing. It selects one runtime adapter and never starts the other runtime or invokes the cross-model review skill.
+The shared review skill owns scope, the review contract, role separation, reconciliation, fixes, clean gates, and handoff to testing. It presents them as semantic invariants and judgment principles rather than a prescribed message sequence, so the coordinator can adapt the interaction without weakening the boundaries. It selects one runtime adapter and never starts the other runtime or invokes the cross-model review skill.
 
 Claude and Codex mechanics live in separate, concise references. Each reference describes only how to start the reviewer, conditionally start the auditor, capture their handles, preserve them for the working loop, and resume them. A shared prompt defines the auditor's narrow finding-challenge role. Codex target selection remains discoverable through CLI help; the reference preserves only the non-obvious reviewer session-ID choreography.
 

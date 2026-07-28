@@ -1,6 +1,6 @@
 # Claude Code runtime
 
-Use Claude Code's native subagent tools. Keep reviewer and auditor in different sessions.
+Use this reference only for Claude Code invocation and session reuse; keep review judgment in the core skill. Use Claude Code's native subagent tools and keep reviewer and auditor in different sessions.
 
 Start every reviewer in a fresh subagent with a prompt beginning exactly:
 
