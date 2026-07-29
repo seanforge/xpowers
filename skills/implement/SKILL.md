@@ -36,12 +36,12 @@ After the task's implementation and focused checks, start a fresh, isolated, rea
 
 Each task owns its reviewer session. Freshness constrains its starting context; preserve and resume the session until both judgments pass, and do not terminate or discard it while task review remains open.
 
-Select the review context and exploration depth in proportion to the task and its risks. Useful inputs include the task's plan commitments, relevant parts of the implementation outline, testing decisions, repository instructions, attributable code and test changes, and verification evidence. Require the reviewer to treat implementation reports as unverified claims and independently assess:
+Brief the reviewer on the task's intent, scope, result to establish, material focus, and useful evidence. Inputs may include the task's plan commitments, relevant parts of the implementation outline, testing decisions, repository instructions, attributable code and test changes, and verification evidence. Require the reviewer to treat implementation reports as unverified claims; it chooses its reasoning tools, additional evidence, and exploration depth while independently assessing:
 
 - **Requirements satisfied:** the task is complete, correctly understood, within scope, and consistent with the plan.
-- **Task quality approved:** the implementation is correct, maintainable, appropriately tested, and supported by sufficient executable evidence.
+- **Task quality approved:** the implementation is correct, maintainable, architecturally sound where applicable, and supported by the valuable executable tests and other sufficient evidence warranted by its behavior and risks.
 
-Require the reviewer to invoke the `skills:clean-code` and `skills:valuable-tests` SKILLs, plus the `codebase-design` SKILL when the task changes a module, interface, seam, adapter, or architecture. Do not pre-judge or suppress findings in the reviewer prompt.
+Do not pre-judge or suppress findings in the reviewer prompt.
 
 Keep the reviewer confined to the task's commitments, attributable changes, and focused evidence. Do not ask it to inspect unrelated work, review the whole change, or declare the change clean. The `xpowers:review` SKILL owns cross-task interactions, integration risks, and whole-change correctness.
 

@@ -24,13 +24,13 @@ Fix the intended comparison point, verify that the scope is non-empty, and inclu
 
 Use the provided plan as the primary statement of intent when available. For a small planless hotfix, use the explicit intent from the user request, PR, or commits; ask the user only when intent remains ambiguous.
 
-Give every reviewer the complete scope, repository instructions, intent, and a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. Ask for review only: no edits.
+Brief every reviewer on the user's intent, complete scope, result to establish, repository instructions, and material focus or evidence. Give it a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. The reviewer chooses its reasoning tools, additional evidence, and exploration depth. Ask for review only: no edits.
 
-Require every reviewer to invoke the `skills:valuable-tests` and `skills:clean-code` SKILLs, plus the `codebase-design` SKILL when the review surface changes a module, interface, seam, adapter, or architecture. Before applying a fix, invoke `skills:clean-code` when changing production code or tests, `skills:valuable-tests` when changing tests, `codebase-design` when reshaping modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
+Require the review to establish intent alignment, correctness, maintainability, whether the change has the valuable executable tests and other sufficient evidence warranted by its behavior and risks, and architectural soundness where applicable. Before applying a fix, invoke `skills:clean-code` when changing production code or tests, `skills:valuable-tests` when changing tests, `codebase-design` when reshaping modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
 
 ## Preserve the invariants
 
-Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Select explicit context, repository exploration, and exchanges in proportion to the change and its risks. Freshness constrains starting context; it does not prevent resuming that session within its review round.
+Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Give each fresh role deliberately selected starting context; it chooses any additional evidence and exploration depth. Freshness constrains starting context; it does not prevent resuming that session within its review round.
 
 - Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
 - A reviewer and auditor always occupy different sessions.

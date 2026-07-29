@@ -100,11 +100,11 @@ The writer remains responsible for checking the complete planning output against
 
 Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Each unit owns one read-only reviewer session. It must start through the active harness's native isolation mechanism with no inherited writer conversation context; this isolation is non-negotiable. Freshness constrains only the starting context, so preserve and resume that reviewer while the same unit evolves.
 
-Provide whatever explicit audit context materially helps the reviewer judge fidelity, such as the original request, repository instructions, plan paths or series identity, settled user decisions, and evidence. Prefer discoverable references over copied content, and exclude superseded, repetitive, or irrelevant discussion.
+Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request, repository instructions, or plan-series identity. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
-The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently checks repository evidence in proportion to risk. Audit context may expose fidelity gaps; it never compensates for information absent from the plans or their discoverable references.
+The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Audit context may expose fidelity gaps; it never compensates for information absent from the plans or their discoverable references.
 
-The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. The current unit is ready only when every plan and its series interactions hold up as an implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
+The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict for the complete unit, including series interactions, based on whether it holds up as a trustworthy implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
 
 ## Hand off
 
