@@ -32,11 +32,11 @@ Run focused tests and applicable typechecks throughout the task. Stay within sco
 
 ### Review the task
 
-After the task's implementation and focused checks, start a fresh read-only reviewer subagent scoped to that task. Do not substitute the implementer's self-review for this independent review.
+After the task's implementation and focused checks, start a fresh, isolated, read-only reviewer subagent scoped to that task through the active harness's native context-isolation mechanism, with no inherited conversation context. Give it deliberately selected context sufficient for an independent judgment; do not substitute the implementer's self-review for this review.
 
-Each task owns its reviewer session. Preserve it until both judgments pass; do not terminate or discard it while task review remains open.
+Each task owns its reviewer session. Freshness constrains its starting context; preserve and resume the session until both judgments pass, and do not terminate or discard it while task review remains open.
 
-Give the reviewer the task's plan commitments, relevant parts of the implementation outline, testing decisions, repository instructions, attributable code and test changes, and verification evidence. Require it to treat implementation reports as unverified claims and independently assess:
+Select the review context and exploration depth in proportion to the task and its risks. Useful inputs include the task's plan commitments, relevant parts of the implementation outline, testing decisions, repository instructions, attributable code and test changes, and verification evidence. Require the reviewer to treat implementation reports as unverified claims and independently assess:
 
 - **Requirements satisfied:** the task is complete, correctly understood, within scope, and consistent with the plan.
 - **Task quality approved:** the implementation is correct, maintainable, appropriately tested, and supported by sufficient executable evidence.

@@ -94,6 +94,18 @@ Treat the template as coverage prompts, not a demand for exhaustive detail. Keep
 
 When a disposable prototype expresses a decision more precisely than prose, include only its smallest decision-rich excerpt, such as a state machine, reducer, schema, or type shape, and identify it as prototype evidence.
 
+The writer remains responsible for checking the complete planning output against the settled user decisions, repository evidence, and this SKILL. Resolve omissions, contradictions, duplicated context, and assumptions that exist only in the conversation before treating it as ready.
+
+## Review the plan
+
+Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Each unit owns one read-only reviewer session. It must start through the active harness's native isolation mechanism with no inherited writer conversation context; this isolation is non-negotiable. Freshness constrains only the starting context, so preserve and resume that reviewer while the same unit evolves.
+
+Provide whatever explicit audit context materially helps the reviewer judge fidelity, such as the original request, repository instructions, plan paths or series identity, settled user decisions, and evidence. Prefer discoverable references over copied content, and exclude superseded, repetitive, or irrelevant discussion.
+
+The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently checks repository evidence in proportion to risk. Audit context may expose fidelity gaps; it never compensates for information absent from the plans or their discoverable references.
+
+The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. The current unit is ready only when every plan and its series interactions hold up as an implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
+
 ## Hand off
 
-Ask the user to review the written plan or plan series. Revise it until the user is satisfied, then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Then recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.
+Do not commit until the current planning output has both user satisfaction and reviewer approval; substantive revisions invalidate the prior approval and require renewed review in the same session. Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.

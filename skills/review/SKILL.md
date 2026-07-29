@@ -26,9 +26,11 @@ Use the provided plan as the primary statement of intent when available. For a s
 
 Give every reviewer the complete scope, repository instructions, intent, and a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. Ask for review only: no edits.
 
-Use `skills:valuable-tests`, `skills:clean-code`, and `codebase-design` to shape every reviewer's criteria. Invoke `skills:clean-code` again before changing production code, `codebase-design` when a fix reshapes modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
+Require every reviewer to invoke the `skills:valuable-tests` and `skills:clean-code` SKILLs, plus the `codebase-design` SKILL when the review surface changes a module, interface, seam, adapter, or architecture. Before applying a fix, invoke `skills:clean-code` when changing production code or tests, `skills:valuable-tests` when changing tests, `codebase-design` when reshaping modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
 
 ## Preserve the invariants
+
+Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Select explicit context, repository exploration, and exchanges in proportion to the change and its risks. Freshness constrains starting context; it does not prevent resuming that session within its review round.
 
 - Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
 - A reviewer and auditor always occupy different sessions.
