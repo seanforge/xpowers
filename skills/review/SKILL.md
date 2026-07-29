@@ -62,7 +62,7 @@ The only non-clean handoff is a concrete user decision that evidence cannot sett
 
 Start with a fresh native reviewer. On the round's first findings, start the active runtime's Xpowers auditor as a fresh session. Give it the findings, their reasoning and evidence, the review contract, and access to the relevant code.
 
-Treat reconciliation as a direct, evidence-driven argument between reviewer and auditor. Relay each side's complete arguments, objections, and evidence to the other, and require both to answer every unresolved point. Adapt the number and shape of exchanges to the evidence; do not summarize away disagreement or adjudicate it yourself.
+Treat reconciliation as a direct, evidence-driven argument between reviewer and auditor. Exchange evidence or reasoning when it could change the other role's position, and require both to answer every unresolved point. Explicit acceptance of an unchanged position completes reconciliation without another turn. Adapt the number and shape of exchanges to the evidence; do not summarize away disagreement or adjudicate it yourself.
 
 Guide both roles toward case-by-case engineering judgment. A finding may be technically true yet immaterial. What matters is whether it represents a grounded, material risk under credible real-world conditions for this system.
 
