@@ -34,7 +34,7 @@ Do not invent architecture to fill an information gap. Explore or ask instead.
 
 After the change is understood, estimate the implementation surface and shape it into reviewable PRs. Do not force PR boundaries before the behavioral, architectural, and testing decisions are clear enough to support them.
 
-Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, target 200–500 changed lines, treat 500–1,000 as large but acceptable when a cohesive behavioral or architectural seam makes splitting worse, and use roughly 1,000 as an outer guardrail rather than a planning target. These fallback ranges guide reviewability; they do not override sound boundaries or justify filling an oversized PR.
+Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, target 200–500 changed lines, treat 500–1,000 as large but acceptable when a cohesive behavioral or architectural seam makes splitting worse, and use roughly 1,000 as an outer guardrail rather than a planning target.
 
 Count production code, tests, configuration, schemas, migrations, and delivery-required product documentation. Exclude plan documents under `docs/plans/` and generated artifacts from the estimate.
 
@@ -100,11 +100,11 @@ The writer remains responsible for checking the complete planning output against
 
 ## Review the plan
 
-Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context; this isolation is non-negotiable. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
+Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
 
 Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request, repository instructions, or plan-series identity. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
-The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Audit context may expose fidelity gaps; it never compensates for information absent from the plans or their discoverable references.
+The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Reject a handoff whose required information exists only in audit context rather than the plans or their discoverable references.
 
 The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict for the complete unit, including series interactions, based on whether it holds up as a trustworthy implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
 

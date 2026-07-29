@@ -2,13 +2,13 @@
 
 Use this reference only for Codex invocation and session reuse; keep review judgment in the core skill. Use the native Codex CLI in the repository.
 
-`codex review` accepts exactly one target: `--base`, `--commit`, `--uncommitted`, or a positional custom prompt. The CLI rejects a target flag combined with a custom prompt. Xpowers needs the complete review contract, so resolve the comparison point first and use a raw custom prompt that carries it:
+`codex review` accepts exactly one target: `--base`, `--commit`, `--uncommitted`, or a positional custom prompt. The CLI rejects a target flag combined with a custom prompt. Resolve the comparison point first and pass the core review contract in a raw custom prompt:
 
 ```sh
 codex review '<review range, such as changes against a branch or commit, one commit, uncommitted changes, or the complete mixed current scope> <review contract from the core skill>'
 ```
 
-Express the exact range and contract needed for the current review; the example is not a fixed prompt or closed schema. Do not add `--base`, `--commit`, or `--uncommitted` to a custom-prompt invocation. Capture the `session id:` printed in its startup output before collecting the result.
+Express the exact range and contract needed for the current review. Do not add `--base`, `--commit`, or `--uncommitted` to a custom-prompt invocation. If the installed CLI rejects this invocation, consult `codex review --help`, adapt and verify a form that preserves the exact range and core review contract, then retry. Capture the `session id:` printed in its startup output before collecting the result.
 
 If a review runs unusually long, inspect the matching `~/.codex/sessions/**/rollout-*<session-id>.jsonl` before treating it as stalled.
 
@@ -19,8 +19,6 @@ codex exec resume --json <reviewer-session-id> '<follow-up prompt>'
 ```
 
 Use that same reviewer session ID both for reviewer-auditor reconciliation exchanges and for complete re-review after fixes within the round.
-
-Use `codex exec '<prompt>'` for an unrelated fresh Codex task. Use `codex exec resume` whenever the prompt must continue the active reviewer session.
 
 On the round's first findings, use native `spawn_agent` with `agent_type: "xpowers-auditor"` and `fork_turns: "none"` to start a different fresh session. Pass the submitted findings, their reasoning and evidence, the review contract, and the relevant code context. Capture the returned agent ID and target the active auditor ID with `followup_task` for every later exchange in the round. Replacing a failed reviewer does not replace an existing auditor.
 

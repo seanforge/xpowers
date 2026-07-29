@@ -36,7 +36,7 @@ Before applying a fix, invoke `skills:clean-code` when changing production code 
 
 ## Preserve the invariants
 
-Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Give each fresh role deliberately selected starting context; it chooses any additional evidence and exploration depth. Freshness constrains starting context; it does not prevent resuming that session within its review round.
+Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Give each fresh role deliberately selected starting context; it chooses any additional evidence and exploration depth.
 
 - Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
 - A reviewer and auditor always occupy different sessions.
