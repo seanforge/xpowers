@@ -9,7 +9,7 @@
   "interface": {
     "displayName": "Xpowers",
     "shortDescription": "A minimal, evidence-driven development flow.",
-    "longDescription": "Shape an evidence-backed change, implement it, review the diff, and test the reviewed result without replacing the agent harness's native intelligence.",
+    "longDescription": "Shape an evidence-backed change, implement it, and review the complete result without replacing the agent harness's native intelligence.",
     "developerName": "Xiang Zhang",
     "category": "Productivity",
     "capabilities": ["Development workflow", "Evidence-driven planning"],

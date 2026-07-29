@@ -13,8 +13,7 @@
       "skills": [
         "./skills/plan/",
         "./skills/implement/",
-        "./skills/review/",
-        "./skills/test/"
+        "./skills/review/"
       ]
     }
   ]

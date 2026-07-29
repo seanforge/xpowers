@@ -1,11 +1,11 @@
 ---
 name: review
-description: Coordinate whole-change review after implementation and before formal testing, using the active harness's native reviewer plus an isolated finding auditor when needed.
+description: Coordinate whole-change review after implementation and before the normal PR and CI handoff, using the active harness's native reviewer plus an isolated finding auditor when needed.
 ---
 
 # Review
 
-Establish a trustworthy conclusion about the complete current change before formal testing. Use this skill as a reasoning framework, not a rigid workflow: preserve its semantic boundaries while adapting the interaction to the change, evidence, and active agent runtime.
+Establish a trustworthy conclusion about the complete current change before the normal PR and CI handoff. Use this skill as a reasoning framework, not a rigid workflow: preserve its semantic boundaries while adapting the interaction to the change, evidence, and active agent runtime.
 
 ## Coordinate; do not review
 
@@ -70,7 +70,7 @@ A converging fix loop makes the system model more coherent while reducing risk a
 
 On non-convergence, freeze editing before another fix. Use `diagnosing-bugs`, return the current finding and pattern to the round's active reviewer and auditor, and reconcile a simpler coherent direction before changing code again. Ask the user only when that direction requires a product decision, architectural change, or materially larger scope.
 
-After a coherent fix, resume the round's active reviewer for a full review of the complete current change. Feed any findings back through the round's active auditor and reconciliation before another coordinator fix, repeating this loop within the round.
+After a coherent fix, run the affected repository checks and relay their evidence, then resume the round's active reviewer for a full review of the complete current change. Feed any findings back through the round's active auditor and reconciliation before another coordinator fix, repeating this loop within the round.
 
 ## Complete rounds and reset context
 
@@ -96,4 +96,4 @@ Signals include, but are not limited to:
 
 ## Finish
 
-Report the clean result, important fixes made during review, and residual risk for formal testing. Recommend invoking `xpowers:test` and ask whether to proceed; never invoke it automatically.
+Report the clean result, important fixes and verification performed during review, and residual risk. Recommend the repository's normal PR and CI workflow, which owns the complete configured suite and matrices, and ask whether to proceed; never start it automatically.

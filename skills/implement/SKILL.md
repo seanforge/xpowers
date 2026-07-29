@@ -52,6 +52,6 @@ If either judgment fails, fix the findings, rerun affected checks, and resume th
 
 Reconcile the implementation against the provided plan, commitment by commitment. Every in-scope commitment must be implemented or removed only through the substantive plan-revision contract above; never hand incomplete planned work to review. Run the complete change-relevant verification set once. If a defect appears, return to the affected behavior and re-run its checks.
 
-This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; the `xpowers:review` SKILL determines correctness and the `xpowers:test` SKILL validates it.
+This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; the `xpowers:review` SKILL determines correctness.
 
 Report the outcome, deviations, verification actually run, and remaining risks. Recommend invoking the `xpowers:review` SKILL and ask whether to proceed; never invoke it automatically or create a handoff artifact.
