@@ -34,11 +34,13 @@ Do not invent architecture to fill an information gap. Explore or ask instead.
 
 After the change is understood, estimate the implementation surface and shape it into reviewable PRs. Do not force PR boundaries before the behavioral, architectural, and testing decisions are clear enough to support them.
 
-Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, target 200–500 changed lines and treat 500–1,000 as large but acceptable only when the change remains highly cohesive; split work expected to exceed roughly 1,000 lines.
+Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, target 200–500 changed lines, treat 500–1,000 as large but acceptable when a cohesive behavioral or architectural seam makes splitting worse, and use roughly 1,000 as an outer guardrail rather than a planning target.
 
 Count production code, tests, configuration, schemas, migrations, and delivery-required product documentation. Exclude plan documents under `docs/plans/` and generated artifacts from the estimate.
 
-Each plan owns one PR. When the complete change exceeds one reviewable PR, split it along behavioral or architectural boundaries into an ordered plan series. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
+Treat the estimate as a provisional risk signal, not a delivery commitment. Split using the strongest evidence available during planning; implementation revalidates the boundary when the real change surface becomes known.
+
+Each plan defines the complete scope of exactly one planned PR. When the complete change exceeds one reviewable PR, split it along behavioral or architectural boundaries into an ordered plan series. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
 
 A single planning session may produce multiple plans when evidence supports their boundaries and decisions. Later plans inherit the decisions settled during that session; implementation revalidates them against the merged repository state and reopens only decisions contradicted by new evidence.
 
@@ -94,6 +96,20 @@ Treat the template as coverage prompts, not a demand for exhaustive detail. Keep
 
 When a disposable prototype expresses a decision more precisely than prose, include only its smallest decision-rich excerpt, such as a state machine, reducer, schema, or type shape, and identify it as prototype evidence.
 
+The writer remains responsible for checking the complete planning output against the settled user decisions, repository evidence, and this SKILL. Resolve omissions, contradictions, duplicated context, and assumptions that exist only in the conversation before treating it as ready.
+
+## Review the plan
+
+Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
+
+Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request, repository instructions, or plan-series identity. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
+
+The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Reject a handoff whose required information exists only in audit context rather than the plans or their discoverable references.
+
+The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict for the complete unit, including series interactions, based on whether it holds up as a trustworthy implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
+
 ## Hand off
 
-Ask the user to review the written plan or plan series. Revise it until the user is satisfied, then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Then recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.
+Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
+
+Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.
