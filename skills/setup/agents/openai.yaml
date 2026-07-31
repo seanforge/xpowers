@@ -1,6 +1,6 @@
 interface:
   display_name: "Xpowers Setup"
-  short_description: "Install or refresh the Xpowers native Codex auditor."
-  default_prompt: "Set up the Xpowers native finding auditor for Codex."
+  short_description: "Prepare Xpowers review and stacked PR dependencies"
+  default_prompt: "Use $setup to prepare Xpowers in this repository."
 policy:
   allow_implicit_invocation: false

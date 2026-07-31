@@ -9,9 +9,7 @@ Explore the codebase and close consequential design gaps with the user, then cap
 
 ## Shape the change
 
-Run a `/grilling` session, using the `/domain-modeling` skill.
-
-**CONDITIONAL SKILL INVOCATION:** Invoke the `codebase-design` SKILL when planning a module, interface, seam, adapter, architectural change, or refactor.
+Run a `/grilling` session using the `/domain-modeling` and `codebase-design` skills.
 
 Planning is an evidence loop, not a fixed sequence. For each important uncertainty, use whichever action produces the strongest evidence:
 
@@ -40,9 +38,9 @@ Count production code, tests, configuration, schemas, migrations, and delivery-r
 
 Treat the estimate as a provisional risk signal, not a delivery commitment. Split using the strongest evidence available during planning; implementation revalidates the boundary when the real change surface becomes known.
 
-Each plan defines the complete scope of exactly one planned PR. When the complete change exceeds one reviewable PR, split it along behavioral or architectural boundaries into an ordered plan series. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
+Every planning output is an ordered Plan Series of one or more plans. Each plan defines the complete scope of exactly one planned PR. Split the change along behavioral or architectural boundaries when it exceeds one reviewable PR. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
 
-A single planning session may produce multiple plans when evidence supports their boundaries and decisions. Later plans inherit the decisions settled during that session; implementation revalidates them against the merged repository state and reopens only decisions contradicted by new evidence.
+A single planning session may produce multiple plans when evidence supports their boundaries and decisions. Later plans inherit the decisions settled during that session; implementation revalidates them against their current dependency layer and reopens only decisions contradicted by new evidence.
 
 Treat each plan as a dated decision snapshot for its PR, not a living source of truth. Revise it until the PR merges, then preserve it as history; capture later decisions in a new plan while code, tests, domain documentation, and ADRs remain the current truth.
 
@@ -50,14 +48,14 @@ Treat each plan as a dated decision snapshot for its PR, not a living source of 
 
 Write each plan as a resumable implementation handoff: concise for an engineer who knows the context, yet explicit enough for a fresh agent to recover the necessary context from the repository and referenced plans, assess completeness, and implement without rediscovering settled decisions.
 
-Create one plan file per PR under `docs/plans/`, using the current local date and concise kebab-case names. Use `YYYY-MM-DD-<change-name>.md` for a standalone plan and `YYYY-MM-DD-<series>-NN-<slice>.md` for an ordered series.
+Create one plan file per PR under `docs/plans/`, using the current local date and `YYYY-MM-DD-<series>-NN-<slice>.md` with concise kebab-case names.
 
 ```markdown
 # <Change title>
 
 ## Delivery
 
-Series: <series name or standalone>
+Series: <series name>
 Plan: <position of total>
 Depends on: <earlier plan paths or none>
 Estimated reviewable implementation change: <rough changed-line range>
@@ -100,7 +98,7 @@ The writer remains responsible for checking the complete planning output against
 
 ## Review the plan
 
-Treat a standalone plan—or plans created or substantively revised together in a series—as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
+Treat plans created or substantively revised together in a series as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
 
 Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request, repository instructions, or plan-series identity. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
@@ -112,4 +110,4 @@ The writer owns fixes; the reviewer remains read-only and neither edits plans, s
 
 Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
 
-Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:implement` SKILL to implement the first plan and ask whether to begin it. Never invoke it automatically.
+Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:stack` SKILL to deliver the Plan Series and ask whether to begin it. Never invoke it automatically.
