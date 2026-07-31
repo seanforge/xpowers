@@ -36,7 +36,7 @@ Setup prepares GitHub's native stack capability for both Claude Code and Codex w
 - Add a concise `skills/stack/` that states the delivery order, role boundaries, final fresh-review gate, and user-authority invariants while leaving task decomposition, recovery, and tool use to the agent. Keep GitHub CLI mechanics in a focused reference.
 - Update `skills/implement/SKILL.md` and `skills/review/SKILL.md` only enough to cooperate with Stack without duplicating Stack's responsibility or prescribing a rigid lifecycle.
 - Expand `skills/setup/` into a cross-runtime setup skill. Keep the existing Codex auditor template behavior and add conservative GitHub CLI version, authentication, extension installation, refresh, and verification.
-- Expose Setup and Stack in the Claude marketplace. Codex continues discovering all skills through its plugin manifest. Update UI metadata to match the revised skills.
+- Let Claude Code and Codex discover the complete standard `skills/` directory without a duplicated skill-path list. Update UI metadata to match the revised skills.
 - Update `README.md` so Setup is no longer described as Codex-only and the minimality statement permits explicitly invoked skill composition without implying that Xpowers can never orchestrate phases.
 - Bump the plugin patch version when the feature is ready for release.
 
@@ -44,7 +44,7 @@ Setup prepares GitHub's native stack capability for both Claude Code and Codex w
 
 - Validate every changed or added skill with the skill-creator validator.
 - Validate both plugin manifests and the Claude marketplace JSON, then run the plugin-creator validator.
-- Check that Claude explicitly exposes Plan, Implement, Review, Setup, and Stack while Codex discovers the same skill set.
+- Check that Claude Code and Codex discover Plan, Implement, Review, Setup, and Stack from the standard skills directory.
 - Check that Plan contains no standalone-plan representation or direct post-plan handoff to Implement.
 - Verify the setup decision paths against the locally installed `gh`: supported version, authenticated active account, target-repository write access, missing extension, installed extension, and help/version detection. Check that missing, outdated, unauthorized, and unauthenticated prerequisites request remediation rather than silently falling back. Do not mutate a real repository stack during validation.
 - Forward-test `xpowers:stack` in fresh isolated agent sessions using representative one-plan and multi-plan series. Judge whether agents preserve the responsibilities and confidence boundaries while adapting their execution intelligently, without leaking an expected workflow.

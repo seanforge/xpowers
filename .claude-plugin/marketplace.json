@@ -9,14 +9,7 @@
       "name": "xpowers",
       "source": "./",
       "description": "A minimal, evidence-driven development flow.",
-      "version": "0.0.10",
-      "skills": [
-        "./skills/plan/",
-        "./skills/implement/",
-        "./skills/review/",
-        "./skills/setup/",
-        "./skills/stack/"
-      ]
+      "version": "0.0.10"
     }
   ]
 }
