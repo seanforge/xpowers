@@ -1,11 +1,11 @@
 ---
 name: stack
-description: Deliver a completed Xpowers Plan Series through implementation, formal review, GitHub pull requests, and an authorized merge decision. Use after xpowers:plan produces one or more ordered PR plans.
+description: Automate whole-series delivery by invoking Xpowers implementation and formal review across ordered pull requests through an authorized merge decision. Use when the user wants one or more completed Xpowers plans delivered as a complete flow.
 ---
 
 # Stack
 
-Own delivery of the provided `xpowers:plan` Plan Series. Preserve one cohesive PR per plan and use GitHub's native stacked-PR capability when the series contains multiple PRs.
+Own automated delivery of the provided `xpowers:plan` Plan Series. Preserve one cohesive PR per plan and use GitHub's native stacked-PR capability when the series contains multiple PRs.
 
 Read [references/github-stack.md](references/github-stack.md) before operating the stack. Invoke `xpowers:setup` when the required GitHub capability is unavailable or unauthorized.
 

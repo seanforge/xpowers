@@ -110,4 +110,4 @@ The writer owns fixes; the reviewer remains read-only and neither edits plans, s
 
 Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
 
-Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:stack` SKILL to deliver the Plan Series and ask whether to begin it. Never invoke it automatically.
+Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:implement` SKILL for the first plan and ask whether to begin it. Never invoke it automatically.
