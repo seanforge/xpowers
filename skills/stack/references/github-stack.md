@@ -2,7 +2,7 @@
 
 Use the installed `github/gh-stack` extension. Verify the active account with `gh auth status`, then consult `gh stack <command> --help` and [GitHub's current documentation](https://docs.github.com/en/pull-requests/reference/stacked-prs-cli-commands) for operations and flags.
 
-A stack is an ordered branch chain from trunk upward. The bottom PR contains the committed Plan Series and its planning artifacts; each PR above it implements one plan and targets the layer below. Operate the stack from one worktree because branches checked out elsewhere block synchronization.
+A stack is an ordered branch chain from trunk upward. Each PR targets the layer below it; the bottom PR targets trunk. Operate the stack from one worktree because branches checked out elsewhere block synchronization.
 
 After trunk or a lower layer changes, run:
 
@@ -10,12 +10,12 @@ After trunk or a lower layer changes, run:
 gh stack sync --prune
 ```
 
-Run this before the final fresh-review gate. If synchronization changes a reviewed layer, its review conclusion is stale.
+This fetches, cascade-rebases, pushes, updates remote stack state, and prunes merged local branches.
 
-After every implementation PR's final review is clean, stop for explicit user authorization, then squash-merge the stack atomically from its top. This preserves the Plan Series and each implementation PR as separate mainline commits.
+Merge a complete stack atomically by targeting its stack number or top PR:
 
 ```sh
 gh stack merge <stack-or-top-pr> --squash
 ```
 
-Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.
+The target and every unmerged PR below it merge all-or-nothing. Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.
