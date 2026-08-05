@@ -1,28 +1,23 @@
 # GitHub stacked PRs
 
-Use the installed `github/gh-stack` extension. Check `gh stack --help` and [GitHub's current official documentation](https://docs.github.com/en/pull-requests/reference/stacked-prs-cli-commands) before relying on remembered syntax.
+Use the installed `github/gh-stack` extension. Verify the active account with `gh auth status`, then consult `gh stack <command> --help` and [GitHub's current documentation](https://docs.github.com/en/pull-requests/reference/stacked-prs-cli-commands) for operations and flags.
 
-## Model
+A stack is an ordered branch chain from trunk upward. Each PR targets the layer below it; the bottom PR targets trunk. Operate the stack from one worktree because branches checked out elsewhere block synchronization.
 
-- A local stack is an ordered branch chain from trunk to the highest layer.
-- Each PR targets the branch immediately below it; the bottom PR targets trunk.
-- GitHub creates a remote stack object only when at least two PRs exist.
-- Operate branch and PR arguments from bottom to top.
-
-## Common operations
+After trunk or a lower layer changes, run:
 
 ```sh
-gh stack init --base <trunk> <bottom-branch> [<next-branch>...]
-gh stack add <next-branch>
-gh stack view --json
-gh stack submit
-gh stack sync
-gh stack link <bottom-pr-or-branch> <next-pr-or-branch> [...]
-gh stack merge
+gh stack sync --prune
 ```
 
-`submit` pushes branches, creates or updates PRs, fixes their bases, and creates or updates the remote stack. Its interactive mode controls titles, descriptions, and draft state; inspect current help before choosing non-interactive flags.
+Run this before the final fresh-review gate. If synchronization changes a reviewed layer, its review conclusion is stale.
 
-`sync` fetches, cascade-rebases, force-pushes with lease, and reconciles remote stack state. Inspect the working tree and current help before running it.
+After every final review is clean, stop for explicit user authorization, then merge the stack atomically from its top:
 
-`merge` is an external state change. Run it only after the core skill's final review gate and explicit user authorization.
+```sh
+gh stack merge <stack-or-top-pr> --squash
+# or
+gh stack merge <stack-or-top-pr> --rebase
+```
+
+Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.
