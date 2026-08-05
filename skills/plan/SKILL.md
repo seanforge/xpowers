@@ -32,11 +32,9 @@ Do not invent architecture to fill an information gap. Explore or ask instead.
 
 After the change is understood, estimate the implementation surface and shape it into reviewable PRs. Do not force PR boundaries before the behavioral, architectural, and testing decisions are clear enough to support them.
 
-Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, target 200–500 changed lines, treat 500–1,000 as large but acceptable when a cohesive behavioral or architectural seam makes splitting worse, and use roughly 1,000 as an outer guardrail rather than a planning target.
+Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, keep each planned PR below 500 changed lines that are human-authored and directly define shipped behavior or its delivery. Treat all other changes as review surface, not part of this numeric estimate.
 
-Count production code, tests, configuration, schemas, migrations, and delivery-required product documentation. Exclude plan documents under `docs/plans/` and generated artifacts from the estimate.
-
-Treat the estimate as a provisional risk signal, not a delivery commitment. Split using the strongest evidence available during planning; implementation revalidates the boundary when the real change surface becomes known.
+The estimate is provisional. Implementation revalidates the actual change surface before exceeding the applicable limit.
 
 Every planning output is an ordered Plan Series of one or more plans. Each plan defines the complete scope of exactly one planned PR. Split the change along behavioral or architectural boundaries when it exceeds one reviewable PR. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
 
