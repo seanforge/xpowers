@@ -102,4 +102,4 @@ Signals include, but are not limited to:
 
 ## Finish
 
-Report the clean result, important fixes and verification performed during review, and residual risk, then return control to the invoker. The repository's normal PR and CI workflow—or `xpowers:stack` when it invoked this skill—owns subsequent delivery and merge authorization; never start either automatically.
+Report the clean result, important fixes, verification performed, and residual risk. When invoked by `xpowers:stack`, return the conclusion so Stack can continue. Otherwise, recommend the repository's normal PR and CI handoff and ask whether to proceed. Never create or merge a PR from this skill.

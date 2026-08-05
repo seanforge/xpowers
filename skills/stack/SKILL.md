@@ -34,4 +34,4 @@ Persist through routine implementation, review, synchronization, and recovery. L
 
 ## Merge
 
-Only after every PR's final content holds a clean `xpowers:review` conclusion, present the stack status and ask whether to merge. Merge only with current user authorization, using GitHub's native stack merge for a multi-PR series and the repository's normal PR merge for a one-PR series.
+Only after every PR's final content holds a clean `xpowers:review` conclusion, present the stack status, stop, and ask whether to merge. Never merge without explicit current user authorization. Use GitHub's native stack merge for a multi-PR series and the repository's normal PR merge for a one-PR series.
