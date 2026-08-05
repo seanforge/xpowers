@@ -13,14 +13,13 @@ Read [references/github-stack.md](references/github-stack.md) before operating t
 
 Resolve the complete series and its dependency order from the provided plans. Use the active harness's native task tracking, Git, and GitHub as the only workflow state.
 
-Use the committed Plan Series and its planning artifacts as the bottom PR against trunk, with no implementation. Preserve its existing `xpowers:plan` user and peer-review gates; do not invoke `xpowers:review` for this PR.
+Use the committed Plan Series and its planning artifacts as the implementation-free bottom PR against trunk; do not invoke `xpowers:review` for it.
 
 For each plan in dependency order:
 
 1. Establish its intended branch and PR layer.
 2. Invoke `xpowers:implement` for exactly that plan.
-3. Create or update its PR, then invoke `xpowers:review` against that plan and layer.
-4. Continue the implementation–review loop until the PR's current content holds a clean formal review conclusion.
+3. Create or update its PR, then invoke `xpowers:review` against that plan and layer until the PR's current content holds a clean formal review conclusion.
 
 After the complete series is implemented, invoke a fresh `xpowers:review` for every implementation PR in dependency order against its final intended layer. Later fixes, rebases, or dependency changes invalidate any affected conclusion; restore clean final conclusions across the stack before proceeding.
 
