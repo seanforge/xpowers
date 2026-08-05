@@ -5,13 +5,15 @@ description: Automate whole-series delivery by invoking Xpowers implementation a
 
 # Stack
 
-Own automated delivery of the provided `xpowers:plan` Plan Series. Preserve one cohesive PR per plan and use GitHub's native stacked-PR capability when the series contains multiple PRs.
+Own automated delivery of the provided `xpowers:plan` Plan Series as one Plan Series PR followed by one implementation PR per plan.
 
 Read [references/github-stack.md](references/github-stack.md) before operating the stack. Invoke `xpowers:setup` when the required GitHub capability is unavailable or unauthorized.
 
 ## Deliver the series
 
 Resolve the complete series and its dependency order from the provided plans. Use the active harness's native task tracking, Git, and GitHub as the only workflow state.
+
+Use the committed Plan Series and its planning artifacts as the bottom PR against trunk, with no implementation. Preserve its existing `xpowers:plan` user and peer-review gates; do not invoke `xpowers:review` for this PR.
 
 For each plan in dependency order:
 
@@ -20,7 +22,7 @@ For each plan in dependency order:
 3. Create or update its PR, then invoke `xpowers:review` against that plan and layer.
 4. Continue the implementation–review loop until the PR's current content holds a clean formal review conclusion.
 
-After the complete series is implemented, invoke a fresh `xpowers:review` for every PR in dependency order against its final intended layer. Later fixes, rebases, or dependency changes invalidate any affected conclusion; restore clean final conclusions across the stack before proceeding.
+After the complete series is implemented, invoke a fresh `xpowers:review` for every implementation PR in dependency order against its final intended layer. Later fixes, rebases, or dependency changes invalidate any affected conclusion; restore clean final conclusions across the stack before proceeding.
 
 Persist through routine implementation, review, synchronization, and recovery. Let the invoked skills own their internal methods. Use engineering judgment for task decomposition, stack mechanics, and the evidence needed to preserve cohesive boundaries.
 
@@ -30,9 +32,9 @@ Persist through routine implementation, review, synchronization, and recovery. L
 - Never absorb sibling-plan scope, weaken a planned boundary, or emulate unavailable stack behavior.
 - Actively monitor whether delivery is converging. If it is not, stop adding fixes and return to `xpowers:plan` to revisit the root cause, decomposition, or architecture before continuing.
 - Preserve a valid repository state and independently reviewable PR at every layer.
-- Treat a one-plan series as one ordinary PR with the same implementation and review guarantees; GitHub creates a remote stack only for multiple PRs.
+- Preserve exactly one Plan Series PR plus one implementation PR per plan; a one-plan series therefore contains two PRs.
 - Do not stop for ordinary phase transitions. Ask only for a user-owned decision, missing authority, or an external blocker that remains after reasonable recovery.
 
 ## Merge
 
-Only after every PR's final content holds a clean `xpowers:review` conclusion, present the stack status, stop, and ask whether to merge. Never merge without explicit current user authorization. Use GitHub's native stack merge for a multi-PR series and the repository's normal PR merge for a one-PR series.
+Only after the Plan Series PR still matches the reviewed planning output and every implementation PR holds a clean final `xpowers:review` conclusion, present the stack status, stop, and ask whether to merge. Never merge without explicit current user authorization.
