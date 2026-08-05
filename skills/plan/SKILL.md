@@ -32,7 +32,7 @@ Do not invent architecture to fill an information gap. Explore or ask instead.
 
 After the change is understood, estimate the implementation surface and shape it into reviewable PRs. Do not force PR boundaries before the behavioral, architectural, and testing decisions are clear enough to support them.
 
-Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, keep each planned PR below 500 changed lines that are human-authored and directly define shipped behavior or its delivery. Treat all other changes as review surface, not part of this numeric estimate.
+Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, keep each planned PR below 500 changed lines that are human-authored and directly define shipped behavior or its delivery. Treat all other changes, e.g. tests, plan documents, and generated code, as review surface rather than part of this numeric estimate.
 
 The estimate is provisional. Implementation revalidates the actual change surface before exceeding the applicable limit.
 
