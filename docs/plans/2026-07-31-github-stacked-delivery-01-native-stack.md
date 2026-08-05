@@ -28,7 +28,8 @@ Setup prepares GitHub's native stack capability for both Claude Code and Codex w
 4. The active harness's native task tracking plus Git and GitHub remain the only workflow state. Xpowers adds no state file, workflow runtime, or duplicate checklist.
 5. Setup and Stack are available in both Claude Code and Codex. Setup establishes a supported GitHub CLI, an active account with adequate repository access, and the native `github/gh-stack` extension; in Codex it also maintains the Xpowers auditor.
 6. Stack operations follow current `gh stack --help` and GitHub's official documentation. A concise reference teaches the stable model and common capabilities without replacing those primary sources.
-7. Surface plan invalidation, unavailable delivery capabilities, genuine blockers, and merge choices to the user when their judgment or authority is required. Do not silently weaken the planned PR boundaries, emulate unsupported stack behavior, or merge without current user authorization.
+7. Stack actively monitors convergence. Non-converging delivery stops further fixes and returns to Plan to revisit the root cause, decomposition, or architecture.
+8. Surface plan invalidation, unavailable delivery capabilities, genuine blockers, and merge choices to the user when their judgment or authority is required. Do not silently weaken the planned PR boundaries, emulate unsupported stack behavior, or merge without current user authorization.
 
 ## Implementation outline
 

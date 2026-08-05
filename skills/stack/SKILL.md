@@ -27,7 +27,8 @@ Persist through routine implementation, review, synchronization, and recovery. L
 ## Preserve boundaries
 
 - Never substitute another implementation or review workflow for `xpowers:implement` or `xpowers:review`.
-- Never absorb sibling-plan scope, weaken a planned boundary, or emulate unavailable stack behavior. Return to `xpowers:plan` when evidence invalidates the series design.
+- Never absorb sibling-plan scope, weaken a planned boundary, or emulate unavailable stack behavior.
+- Actively monitor whether delivery is converging. If it is not, stop adding fixes and return to `xpowers:plan` to revisit the root cause, decomposition, or architecture before continuing.
 - Preserve a valid repository state and independently reviewable PR at every layer.
 - Treat a one-plan series as one ordinary PR with the same implementation and review guarantees; GitHub creates a remote stack only for multiple PRs.
 - Do not stop for ordinary phase transitions. Ask only for a user-owned decision, missing authority, or an external blocker that remains after reasonable recovery.
