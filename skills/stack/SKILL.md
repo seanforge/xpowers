@@ -23,7 +23,7 @@ For each plan in dependency order:
 
 After the complete series is implemented, invoke a fresh `xpowers:review` for every implementation PR in dependency order against its final intended layer. Later fixes, rebases, or dependency changes invalidate any affected conclusion; restore clean final conclusions across the stack before proceeding.
 
-Persist through routine implementation, review, synchronization, and recovery. Let the invoked skills own their internal methods. Use engineering judgment for task decomposition, stack mechanics, and the evidence needed to preserve cohesive boundaries.
+Let the invoked skills own their internal methods. Use engineering judgment for task decomposition, stack mechanics, and the evidence needed to preserve cohesive boundaries.
 
 ## Preserve boundaries
 
