@@ -54,4 +54,4 @@ Reconcile the implementation against the provided plan, commitment by commitment
 
 This is a completeness gate, not a correctness judgment. Self-authored tests are implementation evidence; the `xpowers:review` SKILL determines correctness.
 
-Report the outcome, deviations, verification actually run, and remaining risks. Recommend invoking the `xpowers:review` SKILL and ask whether to proceed; never invoke it automatically or create a handoff artifact.
+Report the outcome, deviations, verification actually run, and remaining risks, then return control to the invoker. When no enclosing Xpowers skill owns delivery, recommend invoking the `xpowers:review` SKILL and ask whether to proceed. Never invoke it automatically or create a handoff artifact.

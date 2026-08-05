@@ -102,4 +102,4 @@ Signals include, but are not limited to:
 
 ## Finish
 
-Report the clean result, important fixes and verification performed during review, and residual risk. Recommend the repository's normal PR and CI workflow, which owns the complete configured suite and matrices, and ask whether to proceed; never start it automatically.
+Report the clean result, important fixes, verification performed, and residual risk. When invoked by `xpowers:stack`, return the conclusion so Stack can continue. Otherwise, recommend the repository's normal PR and CI handoff and ask whether to proceed. Never create or merge a PR from this skill.
