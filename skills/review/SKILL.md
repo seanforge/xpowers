@@ -38,6 +38,8 @@ Before applying a fix, invoke `skills:clean-code` when changing production code 
 
 ## Preserve the invariants
 
+Keep orchestration context out of delegated prompts. Make each prompt self-contained around its assigned role, task, and evidence, without revealing or assigning responsibility for the broader workflow.
+
 Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Give each fresh role deliberately selected starting context; it chooses any additional evidence and exploration depth.
 
 - Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
