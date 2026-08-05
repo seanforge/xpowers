@@ -12,12 +12,10 @@ gh stack sync --prune
 
 Run this before the final fresh-review gate. If synchronization changes a reviewed layer, its review conclusion is stale.
 
-After every final review is clean, stop for explicit user authorization, then merge the stack atomically from its top:
+After every final review is clean, stop for explicit user authorization, then squash-merge the stack atomically from its top. This preserves one reviewed Plan/PR as one mainline commit.
 
 ```sh
 gh stack merge <stack-or-top-pr> --squash
-# or
-gh stack merge <stack-or-top-pr> --rebase
 ```
 
 Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.
