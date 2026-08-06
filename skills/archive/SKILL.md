@@ -9,9 +9,8 @@ Finish the reviewed Plan Series with one mechanical top-layer PR. The user's exp
 
 Read [references/github-stack.md](references/github-stack.md) before operating the stack.
 
-1. Resolve the complete Plan Series and its clean stack, and verify that every implementation PR still holds its final clean `xpowers:review` conclusion.
-2. Create one top stack layer and move every plan in the series from `docs/plans/` to `docs/plans/archives/`, preserving filenames and contents.
-3. Verify that the PR contains only those renames, then create or update the Archive PR. Do not invoke `xpowers:review`.
-4. Atomically squash-merge the complete stack through the Archive PR, then synchronize and prune the local stack.
+1. Resolve the current clean PR Stack and the exact Plan Series it delivers.
+2. Add a top Archive PR that moves only that series's plan files, unchanged, from `docs/plans/` to `docs/plans/archives/`; verify rename-only and do not review.
+3. Atomically squash-merge through the Archive PR, then synchronize and prune the local stack.
 
 Never archive only part of a series, edit an archived plan, merge stack members individually, or include unrelated changes in the Archive PR.
