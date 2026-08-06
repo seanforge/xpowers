@@ -1,6 +1,6 @@
 interface:
   display_name: "Xpowers Setup"
-  short_description: "Prepare Xpowers review and stacked PR dependencies"
+  short_description: "Prepare Xpowers repository and delivery dependencies"
   default_prompt: "Use $setup to prepare Xpowers in this repository."
 policy:
   allow_implicit_invocation: false

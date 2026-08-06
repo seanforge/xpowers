@@ -11,11 +11,3 @@ gh stack sync --prune
 ```
 
 This fetches, cascade-rebases, pushes, updates remote stack state, and prunes merged local branches.
-
-Merge a complete stack atomically by targeting its stack number or top PR:
-
-```sh
-gh stack merge <stack-or-top-pr> --squash
-```
-
-The target and every unmerged PR below it merge all-or-nothing. Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.

@@ -12,4 +12,4 @@ The exact skills, dependencies, triggers, and handoffs live in their own `SKILL.
 
 Install Xpowers through the plugin flow supported by the active agent harness, and make referenced external skills available from their own sources.
 
-After installing or updating Xpowers, invoke `xpowers:setup` to prepare GitHub stacked PR delivery. In Codex, Setup also installs the native finding auditor and requests a restart when it changes.
+After installing or updating Xpowers, invoke `xpowers:setup` to prepare repository guidance and GitHub stacked PR delivery. In Codex, Setup also installs the native finding auditor and requests a restart when it changes.

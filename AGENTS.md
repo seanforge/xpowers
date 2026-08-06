@@ -15,6 +15,10 @@
 - Do not introduce a CLI, workflow engine, or automatic phase chaining unless explicitly requested.
 - Treat Markdown as human-authored documentation. Do not run Prettier over Markdown files.
 
+## Archived plans
+
+- `docs/plans/archives/` contains immutable historical decision snapshots. Ignore it unless explicitly researching history; never edit archived plans or treat them as current requirements.
+
 ## Pull request scope
 
 - Keep each PR focused on one self-contained change.
