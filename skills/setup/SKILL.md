@@ -7,11 +7,11 @@ description: Prepare Xpowers repository guidance and delivery dependencies for C
 
 ## Prepare repository guidance
 
-Ensure the repository-root instructions visible to Codex and Claude contain this policy exactly once:
+Establish this repository-level policy for Codex and Claude:
 
 > `docs/plans/archives/` contains immutable historical decision snapshots. Ignore it unless explicitly researching history; never edit archived plans or treat them as current requirements.
 
-Create `AGENTS.md` when missing. Create a missing `CLAUDE.md` as a symlink to `AGENTS.md`; when both are independent files, preserve them and add the policy to each. Reuse shared files or symlinks without duplicating the rule.
+In a new repository, create a minimal root `AGENTS.md` and symlink a missing `CLAUDE.md` to it. In an existing repository, preserve its instruction structure and minimally add the policy to each independent root instruction source the runtimes use. Reuse shared files and symlinks without duplication.
 
 ## Prepare GitHub stacked PRs
 
