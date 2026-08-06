@@ -14,6 +14,7 @@ Run a `/grilling` session using the `/domain-modeling` and `codebase-design` ski
 Planning is an evidence loop, not a fixed sequence. For each important uncertainty, use whichever action produces the strongest evidence:
 
 - Inspect repository instructions, domain glossaries, ADRs, code, tests, documentation, configuration, and history for the codebase's actual behavior and constraints.
+- Ignore `docs/plans/archives/` unless historical decisions are explicitly relevant. Never treat archived plans as current requirements or editable documentation.
 - Search current primary sources for external facts that shape the direction. Always verify libraries, APIs, tools, platforms, standards, security guidance, and other time-sensitive knowledge, even when the answer feels familiar. Prefer official documentation, release notes, specifications, and source code current at the time of planning.
 - Run a disposable spike when reading cannot establish feasibility. Keep it out of production code.
 - Ask the user one decision at a time when evidence cannot settle a product boundary or meaningful tradeoff.
@@ -108,4 +109,4 @@ The writer owns fixes; the reviewer remains read-only and neither edits plans, s
 
 Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
 
-Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend invoking the `xpowers:implement` SKILL for the first plan and ask whether to begin it. Never invoke it automatically.
+Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend either `xpowers:implement` for direct delivery or `xpowers:stack` for the automated series loop, and ask whether to begin. Never invoke either automatically.

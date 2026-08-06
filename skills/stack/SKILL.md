@@ -1,6 +1,6 @@
 ---
 name: stack
-description: Automate whole-series delivery by invoking Xpowers implementation and formal review across ordered pull requests through an authorized merge decision. Use when the user wants one or more completed Xpowers plans delivered as a complete flow.
+description: Automate whole-series implementation and formal review across ordered pull requests. Use when the user wants one or more completed Xpowers plans delivered to a clean stack ready for archival.
 ---
 
 # Stack
@@ -31,9 +31,9 @@ Let the invoked skills own their internal methods. Use engineering judgment for 
 - Never absorb sibling-plan scope, weaken a planned boundary, or emulate unavailable stack behavior.
 - Actively monitor whether delivery is converging. If it is not, stop adding fixes and return to `xpowers:plan` to revisit the root cause, decomposition, or architecture before continuing.
 - Preserve a valid repository state and independently reviewable PR at every layer.
-- Preserve exactly one Plan Series PR plus one implementation PR per plan; a one-plan series therefore contains two PRs.
+- Produce exactly one Plan Series PR plus one implementation PR per plan; `xpowers:archive` later adds the mechanical top layer.
 - Do not stop for ordinary phase transitions. Ask only for a user-owned decision, missing authority, or an external blocker that remains after reasonable recovery.
 
-## Merge
+## Finish
 
-Only after the Plan Series PR still matches the reviewed planning output and every implementation PR holds a clean final `xpowers:review` conclusion, present the stack status, stop, and ask whether to merge. Never merge without explicit current user authorization.
+Only after the Plan Series PR still matches the reviewed planning output and every implementation PR holds a clean final `xpowers:review` conclusion, present the stack status and stop. Recommend invoking `xpowers:archive` to archive the Plan Series and merge the stack; never archive or merge from this skill.

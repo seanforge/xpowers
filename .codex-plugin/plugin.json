@@ -1,6 +1,6 @@
 {
   "name": "xpowers",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "description": "A minimal, evidence-driven development flow for Claude Code and Codex.",
   "author": {
     "name": "Xiang Zhang"
@@ -12,7 +12,7 @@
     "longDescription": "Shape an evidence-backed change and deliver its reviewed pull requests without replacing the agent harness's native intelligence.",
     "developerName": "Xiang Zhang",
     "category": "Productivity",
-    "capabilities": ["Development workflow", "Evidence-driven planning", "Stacked pull requests"],
+    "capabilities": ["Development workflow", "Evidence-driven planning", "Stacked pull requests", "Plan archival"],
     "defaultPrompt": "Use Xpowers to shape this repository change before implementation."
   }
 }

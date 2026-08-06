@@ -1,9 +1,17 @@
 ---
 name: setup
-description: Prepare Xpowers delivery dependencies for Claude Code or Codex. Use after installing or updating Xpowers, before xpowers:stack, or when GitHub stacked PRs or the Codex Xpowers auditor are unavailable.
+description: Prepare Xpowers repository guidance and delivery dependencies for Claude Code or Codex. Use after installing or updating Xpowers, before xpowers:stack, or when GitHub stacked PRs or the Codex Xpowers auditor are unavailable.
 ---
 
 # Set up Xpowers
+
+## Prepare repository guidance
+
+Establish this repository-level policy for Codex and Claude:
+
+> `docs/plans/archives/` contains immutable historical decision snapshots. Ignore it unless explicitly researching history; never edit archived plans or treat them as current requirements.
+
+In a new repository, create a minimal root `AGENTS.md` and symlink a missing `CLAUDE.md` to it. In an existing repository, preserve its instruction structure and minimally add the policy to each independent root instruction source the runtimes use. Reuse shared files and symlinks without duplication.
 
 ## Prepare GitHub stacked PRs
 

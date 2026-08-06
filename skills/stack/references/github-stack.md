@@ -4,6 +4,15 @@ Use the installed `github/gh-stack` extension. Verify the active account with `g
 
 A stack is an ordered branch chain from trunk upward. Each PR targets the layer below it; the bottom PR targets trunk. Operate the stack from one worktree because branches checked out elsewhere block synchronization.
 
+Create and submit layers from bottom to top:
+
+```sh
+gh stack init --base <trunk> <plan-branch>
+gh stack add <implementation-branch>
+gh stack submit --open
+gh stack view --json
+```
+
 After trunk or a lower layer changes, run:
 
 ```sh
@@ -11,11 +20,3 @@ gh stack sync --prune
 ```
 
 This fetches, cascade-rebases, pushes, updates remote stack state, and prunes merged local branches.
-
-Merge a complete stack atomically by targeting its stack number or top PR:
-
-```sh
-gh stack merge <stack-or-top-pr> --squash
-```
-
-The target and every unmerged PR below it merge all-or-nothing. Never merge Stack members individually. After merge, run `gh stack sync --prune` to update trunk and prune merged branches.

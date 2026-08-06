@@ -1,0 +1,6 @@
+interface:
+  display_name: "Xpowers Archive"
+  short_description: "Archive a completed Plan Series and merge its stack"
+  default_prompt: "Use $archive to archive the completed Plan Series and merge its stack."
+policy:
+  allow_implicit_invocation: false
