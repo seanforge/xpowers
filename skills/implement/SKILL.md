@@ -19,7 +19,7 @@ Implement every in-scope commitment in the provided plan, including its executab
 
 Complete one task at a time.
 
-Invoke the TDD skill (`tdd`) before implementation. Establish the test seams agreed in the plan before writing tests; if the plan does not establish the required seams, pause and confirm them with the user. Use red-green vertical slices for behavior-changing work. For a planned behavior-preserving refactor, first pin the preserved behavior with existing tests or characterization tests, then refactor in small verified steps.
+Invoke the `skills:anti-tdd` SKILL before implementing or refactoring production code.
 
 Invoke the `skills:clean-code` SKILL before changing production code or tests.
 
@@ -27,7 +27,7 @@ Invoke the `skills:valuable-tests` SKILL before changing tests.
 
 Invoke the `codebase-design` SKILL before changing a module, interface, seam, adapter, or architecture. Invoke the `diagnosing-bugs` SKILL when a failure remains unexplained, and invoke every repository- or technology-specific SKILL whose trigger applies.
 
-Build production code and its executable tests together; do not defer planned coverage to another phase.
+Complete production code and its planned executable evidence within the task; do not defer planned coverage to another phase.
 
 Run focused tests and applicable typechecks throughout the task. Stay within scope and repository PR-size guidance.
 
