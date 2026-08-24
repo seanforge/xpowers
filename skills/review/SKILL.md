@@ -32,7 +32,7 @@ Require the review to establish intent alignment, correctness, maintainability, 
 
 When their subject matter is present, treat `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` as detailed criteria references for those judgments, not as a prescribed review method.
 
-Before applying a code fix, invoke the TDD skill (`tdd`). Use red-green vertical slices for behavior-changing fixes; for behavior-preserving refactors, first pin the preserved behavior with existing tests or characterization tests, then refactor in small verified steps.
+Before applying a production-code fix, invoke the `skills:anti-tdd` SKILL.
 
 Before applying a fix, invoke `skills:clean-code` when changing production code or tests, `skills:valuable-tests` when changing tests, `codebase-design` when reshaping modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
 
