@@ -1,15 +1,15 @@
 ---
 name: review
-description: Coordinate whole-change review after implementation and before the normal PR and CI handoff, using the active harness's native reviewer plus an isolated finding auditor when needed.
+description: Use when an assigned code-change scope is authorized for independent review, finding adjudication, and root-cause fixes through Implement until clean.
 ---
 
 # Review
 
-Establish a trustworthy conclusion about the complete current change before the normal PR and CI handoff. Use this skill as a reasoning framework, not a rigid workflow: preserve its semantic boundaries while adapting the interaction to the change, evidence, and active agent runtime.
+Establish a trustworthy conclusion about the assigned review scope. Use this skill as a reasoning framework, not a rigid workflow: preserve its semantic boundaries while adapting the interaction to the scope, evidence, and active agent runtime.
 
 ## Coordinate; do not review
 
-Act only as coordinator. Own the review contract, session orchestration, evidence relay, authorized fixes, and stop decision. Never substitute your judgment for the reviewer or finding auditor.
+Act only as coordinator. Own the review contract, session orchestration, evidence relay, fix delegation, and stop decision. Never review or edit the artifact, or substitute your judgment for the reviewer or finding auditor.
 
 Identify the agent harness currently running you, then read exactly its matching reference:
 
@@ -20,34 +20,30 @@ Do not ask the user to choose, read the other runtime reference, start the other
 
 ## Establish the review contract
 
-Fix the intended comparison point, verify that the scope is non-empty, and include the complete change: committed, staged, unstaged, production, and applicable test code.
+Resolve the assigned scope, intent, comparison point, and declared dependencies from the available context. Treat the scope as authoritative and verify that it is non-empty. Review its complete current artifact, including committed, staged, and unstaged production and test changes. An immutable target remains review-only until the invoker provides a mutable branch or worktree for fix delegation. Ask the invoker only when the boundary or intent remains ambiguous.
 
-Use the provided plan as the primary statement of intent when available. For a small planless hotfix, use the explicit intent from the user request, PR, or commits; ask the user only when intent remains ambiguous.
+Require the reviewer to assess whether the assigned scope is cohesive, reviewable under the applicable guidance, aligned with its intent, and consistent with its dependencies.
 
-The provided plan defines the reviewable change intended for one PR; other plans in its series provide context and dependencies, not current scope. Require the reviewer to assess whether the actual change remains cohesive, reviewable under the applicable guidance, and aligned with the approved boundary, regardless of why its surface changed. An unapproved boundary crossing—such as absorbing sibling-plan work—is a scope finding, not a clean result. Reconcile it before editing. When the agreed direction requires changing the plan or boundary, present the evidence and ask whether the user wants to invoke the `xpowers:plan` SKILL. Resume review against the revised unit only after it regains user satisfaction and isolated reviewer approval.
+When delegating scope cleanup, authorize removal only of changes attributable to the reviewed implementation; preserve unrelated or user-owned work and ask when ownership is uncertain.
 
 Brief every reviewer on the user's intent, complete scope, result to establish, repository instructions, and material focus or evidence. Give it a pragmatic staff-engineer mandate to assess both intent alignment and engineering soundness. Treat production code and executable tests as one review surface. The reviewer chooses its reasoning tools, additional evidence, and exploration depth. Ask for review only: no edits.
 
 Require the review to establish intent alignment, correctness, maintainability, whether the change has the valuable executable tests and other sufficient evidence warranted by its behavior and risks, and architectural soundness where applicable.
 
-When their subject matter is present, treat `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` as detailed criteria references for those judgments, not as a prescribed review method.
-
-Before applying a production-code fix, invoke the `skills:anti-tdd` SKILL.
-
-Before applying a fix, invoke `skills:clean-code` when changing production code or tests, `skills:valuable-tests` when changing tests, `codebase-design` when reshaping modules or their interfaces, and `diagnosing-bugs` when a finding's cause remains unexplained.
+Require the reviewer to read and apply `skills:clean-code`, `skills:valuable-tests`, `codebase-design`, and every applicable repository- or technology-specific SKILL as review criteria, not authoring workflows.
 
 ## Preserve the invariants
 
-Keep orchestration context out of delegated prompts. Make each prompt self-contained around its assigned role, task, and evidence, without revealing or assigning responsibility for the broader workflow.
+Keep orchestration context out of delegated prompts. Make each prompt self-contained around its assigned role, scope, and evidence, without revealing or assigning responsibility for the broader workflow.
 
 Fresh always means a new isolated session created through the active runtime's context-isolation mechanism, with no inherited coordinator, role, or prior-round conversation context. Give each fresh role deliberately selected starting context; it chooses any additional evidence and exploration depth.
 
-- Every round starts with a fresh reviewer session and reviews the complete current scope, never only the latest delta.
+- Every round starts with a fresh reviewer session and reviews the complete current artifact within the assigned scope, never only the latest delta.
 - A reviewer and auditor always occupy different sessions.
 - An auditor belongs only to the round in which it is created and exists only after that round's reviewer reports findings.
 - Reuse the active reviewer and auditor sessions throughout their round and never across rounds.
 - An auditor challenges only the submitted findings; it does not independently review the change or search for new issues.
-- Freeze the artifact during review, audit, and reconciliation. Change it only after reviewer and auditor agreement.
+- Freeze the artifact during review, audit, and reconciliation. Change it only after reviewer and auditor agreement through `xpowers:implement`.
 - A valid reviewer result that reports no findings never starts or resumes an auditor.
 - A failed, timed-out, empty, delegated, or otherwise invalid response never counts as clean. Neither does a fix, elapsed time, or coordinator confidence.
 - Never leave a disputed finding unresolved or create a parallel finding ledger.
@@ -58,7 +54,7 @@ Retry every failed, timed-out, empty, delegated, or otherwise invalid review or 
 
 Persist until the applicable clean outcome is established. Do not stop at a progress update, a pending reviewer or auditor, an unresolved finding, or an applied fix. Do not ask the user whether to continue ordinary review-and-fix rounds. Wait for active work, recover or resume reusable sessions, and keep driving reconciliation, fixes, and full re-review.
 
-The only non-clean handoff is a concrete user decision that evidence cannot settle or a genuine external blocker that remains after reasonable recovery. Persistence means owning the outcome, not defending a failing implementation direction.
+A non-clean return is limited to reconciled scope- or decision-invalidating evidence, or a genuine external blocker that remains after reasonable recovery. Return it only to the invoker. Persistence means owning the outcome, not defending a failing implementation direction.
 
 ## Reconcile findings
 
@@ -68,7 +64,7 @@ Treat reconciliation as a direct, evidence-driven argument between reviewer and 
 
 Guide both roles toward case-by-case engineering judgment. A finding may be technically true yet immaterial. What matters is whether it represents a grounded, material risk under credible real-world conditions for this system.
 
-Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Apply only agreed root-cause fixes, and ask the user when evidence cannot settle a product, architectural, or scope decision.
+Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Delegate only the agreed root-cause fix set to an isolated `xpowers:implement` session within the assigned scope; return unresolved product, architectural, or scope decisions to the invoker.
 
 ## Fix root causes, not symptoms
 
@@ -76,9 +72,9 @@ Treat the causal explanation as part of finding resolution. Judge a fix by wheth
 
 A converging fix loop makes the system model more coherent while reducing risk and incidental complexity; persist through it to clean. A non-converging loop is revealed when new reviewer findings show fixes proliferating or relocating related problems. Treat that pattern as evidence—not automatic proof—that the causal model, design, or architecture may be wrong.
 
-On non-convergence, freeze editing before another fix. Use `diagnosing-bugs`, return the current finding and pattern to the round's active reviewer and auditor, and reconcile a simpler coherent direction before changing code again. Ask the user only when that direction requires a product decision, architectural change, or materially larger scope.
+On non-convergence, stop fix delegation. Return the current finding and pattern to the round's active reviewer and auditor, and reconcile a simpler coherent direction before changing code again. Return it to the invoker only when that direction requires a product decision, architectural change, or materially larger scope.
 
-After a coherent fix, run the affected repository checks and relay their evidence, then resume the round's active reviewer for a full review of the complete current change. Feed any findings back through the round's active auditor and reconciliation before another coordinator fix, repeating this loop within the round.
+After Implement returns a coherent fix and verification evidence, resume the round's active reviewer for a full review of the complete current artifact within the assigned scope. Feed any findings back through the round's active auditor and reconciliation before another fix delegation, repeating this loop within the round.
 
 ## Complete rounds and reset context
 
@@ -104,4 +100,4 @@ Signals include, but are not limited to:
 
 ## Finish
 
-Report the clean result, important fixes, verification performed, and residual risk. When invoked by `xpowers:stack`, return the conclusion so Stack can continue. Otherwise, recommend the repository's normal PR and CI handoff and ask whether to proceed. Never create or merge a PR from this skill.
+Report the clean result, important fixes, verification performed, and residual risk, then return control to the invoker. Never create or merge a PR from this skill.

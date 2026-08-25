@@ -5,68 +5,39 @@ description: Use when a repository change requires design decisions, clarificati
 
 # Plan
 
-Explore the codebase and close consequential design gaps with the user, then capture a feasible, user-confirmed direction for implementation. Establish the behavioral contract and decisions that matter; leave local implementation detail to the implementing agent.
+Explore the codebase and close consequential design gaps with the user, then capture the requested change as a feasible, user-confirmed implementation handoff. Establish the behavioral contract and consequential decisions; leave execution packaging and local implementation detail to later judgment.
 
 ## Shape the change
 
-Run a `/grilling` session using the `/domain-modeling` and `codebase-design` skills.
+Run a `grilling` session throughout shaping.
 
-Planning is an evidence loop, not a fixed sequence. For each important uncertainty, use whichever action produces the strongest evidence:
+Compose the applicable skills. Let each own its decisions and preserve its material outputs in the owning artifacts:
 
-- Inspect repository instructions, domain glossaries, ADRs, code, tests, documentation, configuration, and history for the codebase's actual behavior and constraints.
-- Ignore `docs/plans/archives/` unless historical decisions are explicitly relevant. Never treat archived plans as current requirements or editable documentation.
-- Search current primary sources for external facts that shape the direction. Always verify libraries, APIs, tools, platforms, standards, security guidance, and other time-sensitive knowledge, even when the answer feels familiar. Prefer official documentation, release notes, specifications, and source code current at the time of planning.
-- Run a disposable spike when reading cannot establish feasibility. Keep it out of production code.
-- Ask the user one decision at a time when evidence cannot settle a product boundary or meaningful tradeoff.
+- Invoke `domain-modeling` when domain terminology, relationships, or context boundaries need resolution, or when a settled decision may warrant an ADR.
+- Invoke `skills:solution-design` when no decision-complete implementation direction exists.
+- Invoke `codebase-design` when module, interface, seam, adapter, or architecture design is consequential.
+- Invoke `skills:valuable-tests` to select the maintained automated-test portfolio.
 
-Treat model memory as a source of search terms, never as evidence. Do not assume that code exists, an API still behaves the same way, a remembered version is current, or an old recommendation remains sound. Separate verified facts from inference.
+Ignore `docs/plans/archives/` unless historical decisions are explicitly relevant. Never treat archived plans as current requirements or editable documentation.
 
-Treat the current architecture as evidence, not a constraint that must be preserved. Assess whether its responsibilities and seams support the desired behavior cleanly. When they would force broken boundaries or workaround-on-workaround changes, recommend the smallest root-cause refactor and explain whether it is a prerequisite or a deferrable follow-up. Do not expand scope for unrelated cleanup.
-
-Before writing, sketch the public seams that can establish the planned behavior. Prefer the highest useful existing seam that preserves the relevant failure model, and prefer fewer seams over duplicated coverage. Confirm the seams with the user.
-
-Repeat until evidence supports a feasible direction, the user-owned decisions are settled, and the remaining uncertainty is local implementation judgment. Then ask whether to write the plan.
-
-Do not invent architecture to fill an information gap. Explore or ask instead.
-
-## Shape delivery
-
-After the change is understood, estimate the implementation surface and shape it into reviewable PRs. Do not force PR boundaries before the behavioral, architectural, and testing decisions are clear enough to support them.
-
-Follow explicit repository PR-size guidance from files such as `AGENTS.md`, `CLAUDE.md`, or `CONTRIBUTING.md`. When the repository provides none, aim to keep each planned PR at roughly 500 changed lines or fewer, counting human-authored changes that directly define shipped behavior or its delivery. Treat this as a reviewability target, not a mechanical cutoff; prefer a cohesive boundary over splitting solely for a marginal overage. Treat all other changes, e.g. tests, plan documents, and generated code, as review surface rather than part of this numeric estimate.
-
-The estimate is provisional. Implementation revalidates the actual change surface against the applicable guidance when it materially exceeds the plan.
-
-Every planning output is an ordered Plan Series of one or more plans. Each plan defines the complete scope of exactly one planned PR. Split the change along behavioral or architectural boundaries when it exceeds one reviewable PR. Keep tests with the behavior they verify, make dependencies explicit, and preserve a valid repository state after every PR.
-
-A single planning session may produce multiple plans when evidence supports their boundaries and decisions. Later plans inherit the decisions settled during that session; implementation revalidates them against their current dependency layer and reopens only decisions contradicted by new evidence.
-
-Treat each plan as a dated decision snapshot for its PR, not a living source of truth. Revise it until the PR merges, then preserve it as history; capture later decisions in a new plan while code, tests, domain documentation, and ADRs remain the current truth.
+Continue until the intended behavior, user-owned decisions, decision-complete implementation outline, and applicable testing decisions are settled. Then ask whether to write the plan.
 
 ## Write the plan
 
-Write each plan as a resumable implementation handoff: concise for an engineer who knows the context, yet explicit enough for a fresh agent to recover the necessary context from the repository and referenced plans, assess completeness, and implement without rediscovering settled decisions.
+Write the plan as a resumable implementation handoff: concise for an engineer who knows the context, yet explicit enough for a fresh agent to recover the necessary context from the repository, assess completeness, and implement without rediscovering settled decisions.
 
-Create one plan file per PR under `docs/plans/`, using the current local date and `YYYY-MM-DD-<series>-NN-<slice>.md` with concise kebab-case names.
+Create one plan file under `docs/plans/`, using the current local date and `YYYY-MM-DD-<change>.md` with a concise kebab-case name.
 
 ```markdown
 # <Change title>
 
-## Delivery
-
-Series: <series name>
-Plan: <position of total>
-Depends on: <earlier plan paths or none>
-Estimated reviewable implementation change: <rough changed-line range>
-Size guidance: <repository instruction source or Xpowers fallback>
-
 ## Problem
 
-The problem and relevant current behavior addressed by this plan, with the minimum product and technical context needed for implementation. In a series, the first plan also carries the shared background and overall goal.
+The problem and relevant current behavior, with the minimum product and technical context needed for implementation.
 
 ## Outcome
 
-What becomes true when this plan is implemented, from the affected user's or operator's perspective when applicable, including its meaningful boundary.
+What becomes true when the change is complete, from the affected user's or operator's perspective when applicable, including its meaningful boundary.
 
 ## Behavioral commitments
 
@@ -74,11 +45,11 @@ A numbered list of observable success, failure, and boundary behaviors the imple
 
 ## Implementation outline
 
-The expected code shape for implementing this plan: affected modules, directories, and significant files when useful; responsibilities, interfaces, types, functions, or components to create or change; intended data and control flow across boundaries; and prerequisite refactoring. State what each named area is expected to do, not its detailed implementation. Include architectural choices, material alternatives and trade-offs, user clarifications, risks, constraints, and compatibility, migration, rollout, rollback, or observability only when they materially shape the outline.
+Serialize the implementation direction under the `skills:solution-design` Outline contract, including applicable `codebase-design` decisions. Preserve every consequential decision; do not reduce it to a summary or task list.
 
 ## Testing decisions
 
-The agreed public seams and modules or surfaces under test; the observable behavior established at each seam, never implementation details; relevant repository prior art; and change-specific coverage boundaries. Include known, useful commands.
+Serialize the minimum sufficient maintained-test portfolio selected under `skills:valuable-tests`, plus known useful commands.
 
 ## Out of scope
 
@@ -86,10 +57,10 @@ Explicit exclusions when the boundary could otherwise be misread.
 
 ## Future
 
-Optional. Plausible follow-up work explicitly outside the planned outcome and plan series. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
+Optional. Plausible follow-up work explicitly outside the planned outcome. Preserve only enough context to make the current boundary clear; do not turn it into a committed roadmap.
 ```
 
-Treat the template as coverage prompts, not a demand for exhaustive detail. Keep each plan rough, solved, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision. Describe the implementation outline without task checklists, exhaustive file inventories, pseudocode, ordinary code snippets, exact edits, or commit sequences. Use concrete paths when they clarify ownership; say what changes there, not how to code it.
+Treat the template as coverage prompts, not a closed schema. Organize settled decisions by meaning, not by source; add a section only when no existing section can preserve a material decision without distortion. Keep the plan decision-complete, implementation-light, bounded, and verifiable. Make the behavioral commitments complete enough to prevent omitted behavior, not an exhaustive inventory of hypothetical stories. Preserve only research that affects a decision.
 
 When a disposable prototype expresses a decision more precisely than prose, include only its smallest decision-rich excerpt, such as a state machine, reducer, schema, or type shape, and identify it as prototype evidence.
 
@@ -97,16 +68,16 @@ The writer remains responsible for checking the complete planning output against
 
 ## Review the plan
 
-Treat plans created or substantively revised together in a series as one peer-review unit. Review each unit through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
+Treat the plan and any domain documentation or ADRs created or substantively revised with it as one peer-review unit. Review it through one read-only reviewer session at a time. It must start through the active harness's native isolation mechanism with no inherited writer conversation context. Preserve and resume the existing reviewer while it remains available. If it cannot be recovered, start a fresh isolated replacement with the complete unit and authoritative context; never waive review or persist workflow state merely to preserve a session handle.
 
-Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request, repository instructions, or plan-series identity. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
+Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request or repository instructions. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
-The reviewer reads the plans from the repository, judges them against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Reject a handoff whose required information exists only in audit context rather than the plans or their discoverable references.
+The reviewer reads the plan from the repository, judges it against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Require it to read and apply the applicable `skills:solution-design`, `skills:valuable-tests`, `domain-modeling`, and `codebase-design` contracts to their owned outputs without executing their authoring workflows. Reject a handoff whose required information exists only in audit context rather than the plan or its discoverable references.
 
-The writer owns fixes; the reviewer remains read-only and neither edits plans, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict for the complete unit, including series interactions, based on whether it holds up as a trustworthy implementation handoff. Resume the reviewer as needed; ask the user when a finding exposes an unresolved product, architecture, scope, or PR-boundary decision.
+The writer owns fixes; the reviewer remains read-only and neither edits the plan, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict based on whether the complete unit is a trustworthy handoff from which a capable implementation agent can begin without rediscovering consequential design decisions. Resume the reviewer as needed; ask the user when a finding exposes an unresolved user-owned decision.
 
 ## Hand off
 
 Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
 
-Then commit the plans and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plans. Recommend either `xpowers:implement` for direct delivery or `xpowers:stack` for the automated series loop, and ask whether to begin. Never invoke either automatically.
+Then commit the plan and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plan. Recommend `xpowers:implement` for direct execution or `xpowers:stack` for managed delivery. Ask whether to begin, and never invoke either automatically.
