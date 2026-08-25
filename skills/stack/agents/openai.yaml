@@ -1,4 +1,4 @@
 interface:
   display_name: "Xpowers Stack"
-  short_description: "Deliver an Xpowers Plan Series as reviewed PRs"
-  default_prompt: "Use $stack to deliver the provided Xpowers Plan Series."
+  short_description: "Deliver an Xpowers plan as a reviewed PR stack"
+  default_prompt: "Use $stack to deliver the provided Xpowers plan."
