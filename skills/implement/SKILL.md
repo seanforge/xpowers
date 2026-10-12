@@ -7,11 +7,13 @@ description: Use when implementing an assigned code-change scope after its conse
 
 Complete the assigned scope, including its executable evidence, as a coherent whole.
 
+Before anything else, you MUST invoke the `skills:anti-tdd`, `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` SKILLs. Never apply them from memory.
+
 ## Ground the scope
 
 - Resolve the intended behavior, settled design, constraints, and assigned scope from the available context. Ask when the boundary remains ambiguous.
 - Treat the assigned scope as authoritative; do not exceed it.
-- Require the scope to own a complete contract at its boundary, preserve a valid repository state, keep tests with the behavior they verify, and make dependencies explicit.
+- Require the scope to own a complete contract at its boundary, preserve a valid repository state, keep tests with the behavior they verify, and make dependencies explicit. For a fix set, apply this to its enclosing scope.
 - Treat broader context and adjacent changes as intent and dependency context, not current implementation scope. Use the active harness's native planning/task tools as needed; persist no duplicate workflow state.
 - Inspect repository instructions and the relevant code, tests, configuration, and history. Retain ownership of the complete assigned scope when delegating.
 - Treat model memory as a source of search terms, never as evidence. Verify implementation-shaping external claims against current primary sources and evaluate prior art against repository constraints.
@@ -20,13 +22,7 @@ Complete the assigned scope, including its executable evidence, as a coherent wh
 
 ## Implement the scope
 
-Invoke and follow the `skills:anti-tdd` SKILL with the assigned scope as its requested-change context; it owns the production implementation lifecycle.
-
-Invoke and apply the `skills:clean-code` SKILL to production and test code changes.
-
-Invoke the `skills:valuable-tests` SKILL before changing maintained tests; it owns test methodology.
-
-Invoke the `codebase-design` SKILL for implementation-local module, interface, seam, adapter, or architecture decisions. Invoke every repository- or technology-specific SKILL whose trigger applies.
+Follow `skills:anti-tdd` with the assigned scope as its requested-change context; it owns the production implementation lifecycle. Apply `skills:clean-code` to production and test code, `skills:valuable-tests` to maintained tests, and `codebase-design` to implementation-local module, interface, seam, adapter, or architecture decisions. Invoke every repository- or technology-specific SKILL whose trigger applies.
 
 Complete the assigned scope as a coherent whole; do not defer production implementation, exercise and stabilization, maintained tests, or final verification beyond it.
 

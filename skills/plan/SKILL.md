@@ -9,18 +9,18 @@ Explore the codebase and close consequential design gaps with the user, then cap
 
 ## Shape the change
 
-Run a `grilling` session throughout shaping.
+Before anything else, you MUST invoke the `grilling`, `domain-modeling`, `skills:solution-design`, `codebase-design`, and `skills:valuable-tests` SKILLs. Never apply them from memory.
 
-Compose the applicable skills. Let each own its decisions and preserve its material outputs in the owning artifacts:
+Run the `grilling` session throughout shaping. Let each SKILL own its decisions and preserve its material outputs in the owning artifacts:
 
-- Invoke `domain-modeling` when domain terminology, relationships, or context boundaries need resolution, or when a settled decision may warrant an ADR.
-- Invoke `skills:solution-design` when no decision-complete implementation direction exists.
-- Invoke `codebase-design` when module, interface, seam, adapter, or architecture design is consequential.
-- Invoke `skills:valuable-tests` to select the maintained automated-test portfolio.
+- `domain-modeling`: domain terminology, relationships, context boundaries, and ADRs.
+- `skills:solution-design`: the implementation outline.
+- `codebase-design`: consequential module, interface, seam, adapter, or architecture design.
+- `skills:valuable-tests`: the acceptance tests.
 
 Ignore `docs/plans/archives/` unless historical decisions are explicitly relevant. Never treat archived plans as current requirements or editable documentation.
 
-Continue until the intended behavior, user-owned decisions, decision-complete implementation outline, and applicable testing decisions are settled. Then ask whether to write the plan.
+Continue until the intended behavior, user-owned decisions, decision-complete implementation outline, and acceptance tests are settled. Then ask whether to write the plan.
 
 ## Write the plan
 
@@ -45,11 +45,11 @@ A numbered list of observable success, failure, and boundary behaviors the imple
 
 ## Implementation outline
 
-Serialize the implementation direction under the `skills:solution-design` Outline contract, including applicable `codebase-design` decisions. Preserve every consequential decision; do not reduce it to a summary or task list.
+Serialize the implementation direction under the Outline contract of the `skills:solution-design` SKILL, including applicable `codebase-design` SKILL decisions. Preserve every consequential decision; do not reduce it to a summary or task list.
 
-## Testing decisions
+## Acceptance tests
 
-Serialize the minimum sufficient maintained-test portfolio selected under `skills:valuable-tests`, plus known useful commands.
+Maintained tests and commands that prove the behavioral commitments across scope boundaries.
 
 ## Out of scope
 
@@ -72,7 +72,7 @@ Treat the plan and any domain documentation or ADRs created or substantively rev
 
 Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request or repository instructions. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
-The reviewer reads the plan from the repository, judges it against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Require it to read and apply the applicable `skills:solution-design`, `skills:valuable-tests`, `domain-modeling`, and `codebase-design` contracts to their owned outputs without executing their authoring workflows. Reject a handoff whose required information exists only in audit context rather than the plan or its discoverable references.
+The reviewer reads the plan from the repository, judges it against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Before reviewing, it MUST invoke the `skills:solution-design`, `skills:valuable-tests`, `domain-modeling`, and `codebase-design` SKILLs as criteria for their owned outputs, not authoring workflows. Never apply them from memory. Reject a handoff whose required information exists only in audit context rather than the plan or its discoverable references.
 
 The writer owns fixes; the reviewer remains read-only and neither edits the plan, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict based on whether the complete unit is a trustworthy handoff from which a capable implementation agent can begin without rediscovering consequential design decisions. Resume the reviewer as needed; ask the user when a finding exposes an unresolved user-owned decision.
 
@@ -80,4 +80,4 @@ The writer owns fixes; the reviewer remains read-only and neither edits the plan
 
 Present the current written peer-review unit to the user and revise it until they are satisfied. User review and peer review may occur in either order and iterate as needed. Do not commit until the same current unit has both user satisfaction and reviewer approval. Any substantive revision invalidates both gates and requires renewal; purely editorial changes that cannot alter meaning invalidate neither.
 
-Then commit the plan and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plan. Recommend `xpowers:implement` for direct execution or `xpowers:stack` for managed delivery. Ask whether to begin, and never invoke either automatically.
+Then commit the plan and any glossary or ADR changes produced during planning together using the repository's commit conventions; when no domain documentation changed, commit only the plan. Never invoke `xpowers:implement` or `xpowers:stack` automatically.

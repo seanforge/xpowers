@@ -1,6 +1,6 @@
 ---
 name: archive
-description: Use when the user explicitly wants to archive a completed Xpowers plan and atomically merge its reviewed GitHub PR stack after every implementation PR has a current clean xpowers:review conclusion.
+description: Use when the user explicitly wants to archive an implemented Xpowers plan and atomically merge its reviewed GitHub PR stack after every implementation PR has a current clean xpowers:review conclusion.
 ---
 
 # Archive

@@ -30,7 +30,7 @@ Brief every reviewer on the user's intent, complete scope, result to establish, 
 
 Require the review to establish intent alignment, correctness, maintainability, whether the change has the valuable executable tests and other sufficient evidence warranted by its behavior and risks, and architectural soundness where applicable.
 
-Require the reviewer to read and apply `skills:clean-code`, `skills:valuable-tests`, `codebase-design`, and every applicable repository- or technology-specific SKILL as review criteria, not authoring workflows.
+Before reviewing, the reviewer MUST invoke the `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` SKILLs and every applicable repository- or technology-specific SKILL as review criteria, not authoring workflows. Never apply them from memory.
 
 ## Preserve the invariants
 
@@ -64,7 +64,7 @@ Treat reconciliation as a direct, evidence-driven argument between reviewer and 
 
 Guide both roles toward case-by-case engineering judgment. A finding may be technically true yet immaterial. What matters is whether it represents a grounded, material risk under credible real-world conditions for this system.
 
-Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Delegate only the agreed root-cause fix set to an isolated `xpowers:implement` session within the assigned scope; return unresolved product, architectural, or scope decisions to the invoker.
+Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Delegate only the agreed root-cause fix set to an isolated `xpowers:implement` session, scoped to the fix set within the review scope; return unresolved product, architectural, or scope decisions to the invoker.
 
 ## Fix root causes, not symptoms
 
