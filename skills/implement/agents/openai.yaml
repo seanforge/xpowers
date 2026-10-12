@@ -1,4 +1,4 @@
 interface:
   display_name: "Xpowers Implement"
-  short_description: "Implement a provided plan with Anti-TDD and task review"
-  default_prompt: "Use $implement to implement the provided plan."
+  short_description: "Complete an assigned implementation scope"
+  default_prompt: "Use $implement to complete the assigned code-change scope."

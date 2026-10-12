@@ -11,18 +11,12 @@
 
 ## Project constraints
 
-- Keep Xpowers minimal. Prefer small composable skills and native agent-harness capabilities over workflow runtimes, persisted state, duplicate task tracking, or extra artifacts.
+- Write skills for staff-level agents: provide decision ownership, invariants, boundaries, and stop conditions rather than tutorials or exhaustive procedures.
+- Compose invoked skills by preserving their decision ownership and material outputs; do not merely name them or duplicate their methodology.
+- Keep Xpowers minimal. Prefer small composable skills and native agent-harness capabilities over workflow runtimes, persisted state, duplicate workflow tracking, or extra artifacts.
 - Do not introduce a CLI, workflow engine, or automatic phase chaining unless explicitly requested.
 - Treat Markdown as human-authored documentation. Do not run Prettier over Markdown files.
 
 ## Archived plans
 
 - `docs/plans/archives/` contains immutable historical decision snapshots. Ignore it unless explicitly researching history; never edit archived plans or treat them as current requirements.
-
-## Pull request scope
-
-- Keep each PR focused on one self-contained change.
-- Aim for 200–500 reviewable changed lines.
-- Treat 500–1,000 reviewable changed lines as large but acceptable when the change remains cohesive.
-- Do not exceed roughly 1,000 reviewable changed lines; split larger work along behavioral or architectural boundaries.
-- Keep tests with the behavior they verify, and separate preparatory refactoring when practical.

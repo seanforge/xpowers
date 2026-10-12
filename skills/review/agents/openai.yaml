@@ -1,4 +1,4 @@
 interface:
   display_name: "Xpowers Review"
-  short_description: "Review a completed change"
-  default_prompt: "Use $review to review the completed implementation."
+  short_description: "Review and fix an assigned scope until clean"
+  default_prompt: "Use $review to independently review, adjudicate, and fix the assigned code-change scope through Implement until clean."
