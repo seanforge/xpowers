@@ -17,7 +17,7 @@ Derive the fewest PR scopes that satisfy applicable reviewability guidance, usin
 
 Follow repository PR-size guidance. When none exists, use roughly 500 changed lines of production implementation as the upper review budget per PR. Exclude tests, generated code, and planning artifacts from that estimate while treating them as review surface.
 
-Coordinate; never implement. Assign each dependency-ready scope to an isolated implementer session. Reuse a session for sequential scopes when continuity helps and isolation remains valid; run independent scopes concurrently only in isolated sessions with non-overlapping write surfaces, shaped to minimize conflicts. Choose the schedule dynamically. Implementers commit only on their scope branch; the coordinator alone performs stack operations and serializes integration.
+Coordinate; never implement. Assign a scope to an isolated implementer session once its dependencies are implemented, not necessarily reviewed. Reuse a session for sequential scopes when continuity helps and isolation remains valid; run independent scopes concurrently only in isolated sessions with non-overlapping write surfaces, shaped to minimize conflicts. Choose the schedule dynamically. Implementers commit only on their scope branch; the coordinator alone performs stack operations and serializes integration.
 
 For each assigned PR scope:
 
