@@ -29,7 +29,7 @@ Re-evaluate delivery as implementation evidence changes the actual surface. Adju
 
 Implementation may run concurrently, but integrate and formally review one layer at a time in stack order. Do not adopt the next layer until the current layer holds a clean conclusion.
 
-Before finishing, reconcile the reviewed stack against the complete plan; omit or defer no settled commitment. Run the acceptance tests on the top layer; delegate failures to an implementer. Later fixes, rebases, dependency changes, or layer changes invalidate affected conclusions; cascade-rebase and verify affected descendants, then restore clean conclusions in stack order.
+Before finishing, reconcile the stack directly in the coordinator against the complete plan—omit or defer no settled commitment—and confirm the top layer's current head passes the acceptance tests (run them only if unverified on that head; delegate failures to an implementer). Behavioral fixes, dependency changes, or layer changes that alter a layer's diff or parent behavior invalidate affected conclusions; cascade-rebase and verify affected descendants, then restore clean conclusions in stack order. Non-behavioral updates (including, but not limited to, PR metadata, docs, verified test-only additions, or clean `git range-diff` rebases) require verification only.
 
 ## Preserve boundaries
 

@@ -80,11 +80,11 @@ After Implement returns a coherent fix and verification evidence, resume the rou
 
 Use the round as the unit of review confidence. Review and reconciliation determine the authoritative finding set; the coordinator owns round completion and all subsequent control flow. An empty authoritative finding set completes the round.
 
-Freshness constrains a round's starting context, not the evidence it develops. Reconciliation tests findings without consuming freshness; changing the artifact entangles the sessions with work they helped shape. A round is changed after any review-driven edit, even if that edit is later reverted.
+Freshness constrains a round's starting context, not the evidence it develops. Reconciliation tests findings without consuming freshness; changing production behavior entangles the sessions with work they helped shape.
 
-For substantial code, every changed round must be followed by another fresh-session round over the complete current scope, with no prior findings or expected verdict. Apply the same rule to every subsequent round until one completes with an empty authoritative finding set and without changing the artifact. Freshness resets accumulated context and its bias; it never narrows the review to a delta.
+For substantial code, every round with a behavioral production edit (altering logic, control flow, state, I/O, concurrency, contracts, security, or configuration—regardless of finding severity, even if later reverted) must be followed by another fresh-session round over the complete current scope, with no prior findings or expected verdict. Repeat until a round completes with an empty authoritative finding set and no behavioral edits. Freshness resets accumulated context and its bias; it never narrows the review to a delta.
 
-For non-code or non-substantial code, a round that completes with an empty authoritative finding set is sufficient even when it contained fixes.
+For non-behavioral fixes (including, but not limited to, tests, logging, comments, docs, error wording, or dead-code removal), or for non-code / non-substantial code, an empty authoritative finding set from the active reviewer's full re-review completes the review without another fresh-session round.
 
 ## Judge substantial code
 
