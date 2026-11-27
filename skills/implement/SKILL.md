@@ -7,7 +7,7 @@ description: Use when implementing an assigned code-change scope after its conse
 
 Complete the assigned scope, including its executable evidence, as a coherent whole.
 
-Before anything else, you MUST load the `skills:anti-tdd`, `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` SKILLs, and every nested skill they require—never from memory.
+Before anything else, you MUST load the `sean-skills:anti-tdd`, `sean-skills:clean-code`, `sean-skills:valuable-tests`, and `codebase-design` SKILLs, and every nested skill they require—never from memory.
 
 ## Ground the scope
 
@@ -22,7 +22,7 @@ Before anything else, you MUST load the `skills:anti-tdd`, `skills:clean-code`, 
 
 ## Implement the scope
 
-Follow `skills:anti-tdd` with the assigned scope as its requested-change context; it owns the production implementation lifecycle. Apply `skills:clean-code` to production and test code, `skills:valuable-tests` to maintained tests, and `codebase-design` to implementation-local module, interface, seam, adapter, or architecture decisions. Load every repository- or technology-specific SKILL whose trigger applies, and every nested skill it requires.
+Follow `sean-skills:anti-tdd` with the assigned scope as its requested-change context; it owns the production implementation lifecycle. Apply `sean-skills:clean-code` to production and test code, `sean-skills:valuable-tests` to maintained tests, and `codebase-design` to implementation-local module, interface, seam, adapter, or architecture decisions. Load every repository- or technology-specific SKILL whose trigger applies, and every nested skill it requires.
 
 Complete the assigned scope as a coherent whole; do not defer production implementation, exercise and stabilization, maintained tests, or final verification beyond it.
 

@@ -30,7 +30,7 @@ Brief every reviewer on the user's intent, complete scope, result to establish, 
 
 Require the review to establish intent alignment, correctness, maintainability, whether the change has the valuable executable tests and other sufficient evidence warranted by its behavior and risks, and architectural soundness where applicable.
 
-Require in every reviewer's prompt that before reviewing, it MUST load `skills:clean-code`, `skills:valuable-tests`, `codebase-design`, every applicable repository- or technology-specific SKILL, and every nested skill they require as review criteria (not authoring workflows)—never from memory—and list the skills it loaded. Resume the reviewer to load and redo its review if any were skipped.
+Require in every reviewer's prompt that before reviewing, it MUST load `sean-skills:clean-code`, `sean-skills:valuable-tests`, `codebase-design`, every applicable repository- or technology-specific SKILL, and every nested skill they require as review criteria (not authoring workflows)—never from memory—and list the skills it loaded. Resume the reviewer to load and redo its review if any were skipped.
 
 ## Preserve the invariants
 
