@@ -9,14 +9,14 @@ Explore the codebase and close consequential design gaps with the user, then cap
 
 ## Shape the change
 
-Before anything else, you MUST invoke the `grilling`, `domain-modeling`, `skills:solution-design`, `codebase-design`, and `skills:valuable-tests` SKILLs. Never apply them from memory.
+Before anything else, you MUST load the `grilling`, `domain-modeling`, `sean-skills:solution-design`, `codebase-design`, and `sean-skills:valuable-tests` SKILLs, and every nested skill they require—never from memory. Pass this same load mandate in every delegated subagent prompt.
 
 Run the `grilling` session throughout shaping. Let each SKILL own its decisions and preserve its material outputs in the owning artifacts:
 
 - `domain-modeling`: domain terminology, relationships, context boundaries, and ADRs.
-- `skills:solution-design`: the implementation outline.
+- `sean-skills:solution-design`: the implementation outline.
 - `codebase-design`: consequential module, interface, seam, adapter, or architecture design.
-- `skills:valuable-tests`: the acceptance tests.
+- `sean-skills:valuable-tests`: the acceptance tests.
 
 Ignore `docs/plans/archives/` unless historical decisions are explicitly relevant. Never treat archived plans as current requirements or editable documentation.
 
@@ -45,7 +45,7 @@ A numbered list of observable success, failure, and boundary behaviors the imple
 
 ## Implementation outline
 
-Serialize the implementation direction under the Outline contract of the `skills:solution-design` SKILL, including applicable `codebase-design` SKILL decisions. Preserve every consequential decision; do not reduce it to a summary or task list.
+Serialize the implementation direction under the Outline contract of the `sean-skills:solution-design` SKILL, including applicable `codebase-design` SKILL decisions. Preserve every consequential decision; do not reduce it to a summary or task list.
 
 ## Acceptance tests
 
@@ -72,7 +72,7 @@ Treat the plan and any domain documentation or ADRs created or substantively rev
 
 Brief the reviewer on the user's current intent, settled user-owned decisions, the result the review must establish, and material focus or evidence. Provide an authoritative, accessible source for that intent and those decisions, directly or through discoverable references such as the original request or repository instructions. Exclude superseded, repetitive, or irrelevant discussion. Do not prescribe how the reviewer explores, reasons, or reaches its judgment.
 
-The reviewer reads the plan from the repository, judges it against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Before reviewing, it MUST invoke the `skills:solution-design`, `skills:valuable-tests`, `domain-modeling`, and `codebase-design` SKILLs as criteria for their owned outputs, not authoring workflows. Never apply them from memory. Reject a handoff whose required information exists only in audit context rather than the plan or its discoverable references.
+The reviewer reads the plan from the repository, judges it against the planning contract in this SKILL without executing its workflow, and independently inspects whatever repository evidence it considers necessary. Require in its prompt that before reviewing, it MUST load `sean-skills:solution-design`, `sean-skills:valuable-tests`, `domain-modeling`, `codebase-design`, and every nested skill they require as criteria (not authoring workflows)—never from memory—and list the skills it loaded; resume it to load and redo its review if any were skipped. Reject a handoff whose required information exists only in audit context rather than the plan or its discoverable references.
 
 The writer owns fixes; the reviewer remains read-only and neither edits the plan, settles unresolved user-owned decisions, nor invokes the formal `xpowers:review` SKILL. Require an explicit approve-or-reject verdict based on whether the complete unit is a trustworthy handoff from which a capable implementation agent can begin without rediscovering consequential design decisions. Resume the reviewer as needed; ask the user when a finding exposes an unresolved user-owned decision.
 

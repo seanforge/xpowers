@@ -30,7 +30,7 @@ Brief every reviewer on the user's intent, complete scope, result to establish, 
 
 Require the review to establish intent alignment, correctness, maintainability, whether the change has the valuable executable tests and other sufficient evidence warranted by its behavior and risks, and architectural soundness where applicable.
 
-Before reviewing, the reviewer MUST invoke the `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` SKILLs and every applicable repository- or technology-specific SKILL as review criteria, not authoring workflows. Never apply them from memory.
+Require in every reviewer's prompt that before reviewing, it MUST load `sean-skills:clean-code`, `sean-skills:valuable-tests`, `codebase-design`, every applicable repository- or technology-specific SKILL, and every nested skill they require as review criteria (not authoring workflows)—never from memory—and list the skills it loaded. Resume the reviewer to load and redo its review if any were skipped.
 
 ## Preserve the invariants
 
@@ -64,7 +64,7 @@ Treat reconciliation as a direct, evidence-driven argument between reviewer and 
 
 Guide both roles toward case-by-case engineering judgment. A finding may be technically true yet immaterial. What matters is whether it represents a grounded, material risk under credible real-world conditions for this system.
 
-Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Delegate only the agreed root-cause fix set to an isolated `xpowers:implement` session, scoped to the fix set within the review scope; return unresolved product, architectural, or scope decisions to the invoker.
+Reconciliation ends only when both roles agree on each finding's validity, materiality, cause, severity, and coherent fix direction. Treat the reconciled finding set as authoritative. Delegate only the agreed root-cause fix set to an isolated `xpowers:implement` session, scoped to the fix set within the review scope; require in its prompt that it MUST load `xpowers:implement` and every nested skill it requires before editing (never from memory) and list the skills loaded, and resume it to load and redo if any were skipped. Return unresolved product, architectural, or scope decisions to the invoker.
 
 ## Fix root causes, not symptoms
 

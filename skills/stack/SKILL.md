@@ -22,7 +22,7 @@ Coordinate; never implement. Assign a scope to an isolated implementer session o
 For each assigned PR scope:
 
 1. Establish its explicit boundary, dependencies, intended parent layer, and execution isolation.
-2. The implementer MUST invoke the `xpowers:implement` SKILL with the complete plan and assigned scope.
+2. In the implementer's prompt, require loading `xpowers:implement` and every nested skill it requires before acting, with the complete plan and assigned scope.
 3. Integrate the completed scope as one stack layer and cascade-rebase it onto its recorded parent. Resolve mechanical merge conflicts; delegate semantic conflicts and verification failures to an implementer. Run scope-relevant verification against that parent, create or update its PR with a link to the plan and a concise scope contract and dependencies, then invoke the `xpowers:review` SKILL until the layer holds a clean conclusion.
 
 Re-evaluate delivery as implementation evidence changes the actual surface. Adjust unassigned PR boundaries, concurrency, and layer order autonomously while the plan remains valid. Reconcile concrete packaging evidence before changing an assigned boundary. If delivery requires revising the plan, or no cohesive PR scope satisfies the repository's reviewability guidance without doing so, stop accumulating scope, present the evidence, and ask whether the user wants to invoke `xpowers:plan`. Resume only from the newly approved plan.
@@ -34,6 +34,7 @@ Before finishing, reconcile the stack directly in the coordinator against the co
 ## Preserve boundaries
 
 - Never substitute another implementation or review workflow for `xpowers:implement` or `xpowers:review`.
+- Every required skill—and every nested skill it requires—MUST be loaded before acting, never applied from memory. Pass this mandate in every subagent prompt, require subagents to list the skills they loaded, and resume any subagent that skipped one to load and redo its pass.
 - Never expand beyond the plan or emulate unavailable stack behavior.
 - Preserve a valid repository state and independently reviewable PR at every layer.
 - Actively monitor convergence. When fixes proliferate or the execution graph stops becoming clearer, return to planning or diagnosis instead of adding patches.

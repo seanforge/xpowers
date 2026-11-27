@@ -7,7 +7,7 @@ description: Use when implementing an assigned code-change scope after its conse
 
 Complete the assigned scope, including its executable evidence, as a coherent whole.
 
-Before anything else, you MUST invoke the `skills:anti-tdd`, `skills:clean-code`, `skills:valuable-tests`, and `codebase-design` SKILLs. Never apply them from memory.
+Before anything else, you MUST load the `sean-skills:anti-tdd`, `sean-skills:clean-code`, `sean-skills:valuable-tests`, and `codebase-design` SKILLs, and every nested skill they require—never from memory.
 
 ## Ground the scope
 
@@ -15,14 +15,14 @@ Before anything else, you MUST invoke the `skills:anti-tdd`, `skills:clean-code`
 - Treat the assigned scope as authoritative; do not exceed it.
 - Require the scope to own a complete contract at its boundary, preserve a valid repository state, keep tests with the behavior they verify, and make dependencies explicit. For a fix set, apply this to its enclosing scope.
 - Treat broader context and adjacent changes as intent and dependency context, not current implementation scope. Use the active harness's native planning/task tools as needed; persist no duplicate workflow state.
-- Inspect repository instructions and the relevant code, tests, configuration, and history. Retain ownership of the complete assigned scope when delegating.
+- Inspect repository instructions and the relevant code, tests, configuration, and history. Retain ownership of the complete assigned scope when delegating, and require every delegated subagent to load its required skills—and every nested skill they require—before acting, never from memory.
 - Treat model memory as a source of search terms, never as evidence. Verify implementation-shaping external claims against current primary sources and evaluate prior art against repository constraints.
 - Revalidate settled assumptions and the assigned scope against current evidence. Decide implementation-local details autonomously. Return scope- or decision-invalidating evidence to the invoker before further work.
 - When cleaning the scope, remove only out-of-scope changes attributable to its implementation; preserve unrelated or user-owned work and ask when ownership is uncertain.
 
 ## Implement the scope
 
-Follow `skills:anti-tdd` with the assigned scope as its requested-change context; it owns the production implementation lifecycle. Apply `skills:clean-code` to production and test code, `skills:valuable-tests` to maintained tests, and `codebase-design` to implementation-local module, interface, seam, adapter, or architecture decisions. Invoke every repository- or technology-specific SKILL whose trigger applies.
+Follow `sean-skills:anti-tdd` with the assigned scope as its requested-change context; it owns the production implementation lifecycle. Apply `sean-skills:clean-code` to production and test code, `sean-skills:valuable-tests` to maintained tests, and `codebase-design` to implementation-local module, interface, seam, adapter, or architecture decisions. Load every repository- or technology-specific SKILL whose trigger applies, and every nested skill it requires.
 
 Complete the assigned scope as a coherent whole; do not defer production implementation, exercise and stabilization, maintained tests, or final verification beyond it.
 
@@ -32,4 +32,4 @@ Run focused tests and applicable typechecks throughout the work.
 
 Reconcile the result against the assigned scope and its intended behavior, commitment by commitment. Never return incomplete scope. Run the complete scope-relevant verification set once; if a defect appears, return to the affected behavior and re-run its checks.
 
-Self-authored tests and implementation reports are evidence, not a correctness verdict. Report the completed scope and dependencies, outcome, deviations, verification actually run, and residual risks, then return control to the invoker. Create no handoff artifact.
+Self-authored tests and implementation reports are evidence, not a correctness verdict. Report the skills loaded, completed scope and dependencies, outcome, deviations, verification actually run, and residual risks, then return control to the invoker. Create no handoff artifact.
